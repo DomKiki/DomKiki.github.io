@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="./style.css">
+    <title>DFT Paint</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
+    <script src="sketch.js"></script>
+  </head>
+  <body>
+	<div id="canvasDiv"></div>
+	<div id="infosDiv"></div>
+	<div id="buttonDiv">
+		<button id="btnLooping"  class="square" onclick="pressLoop()">Loop</button>
+		<span id="radioSort">
+			<input type="radio" name="rdSort" value="Freq"  disabled>
+			<input type="radio" name="rdSort" value="Amp"   checked>
+			<input type="radio" name="rdSort" value="Phase" disabled>
+			<input type="radio" name="rdSort" value="Re"    disabled>
+			<input type="radio" name="rdSort" value="Im"    disabled>
+		</span>
+		<button id="btnSort"     class="square" onclick="pressSort()"></button>
+		<button id="btnOrder"    class="square" onclick="pressOrder()">Asc</button>
+		<button id="btnReplay"   class="square" onclick="pressReplay()">&#x25B6;</button>
+		<button id="btnClear"    class="square" onclick="pressClear()">&#x239A;</button>
+		<p      id="kSliderText"></p>
+		<input type="range" min="1" max="1" value="1" class="slider" id="kSlider">
+	</div>
+  </body>
+</html>

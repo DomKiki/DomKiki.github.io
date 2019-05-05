@@ -1,0 +1,121 @@
+body { 
+	padding: 0; 
+	margin: 0;
+} 
+
+table {
+	font: 14px arial;
+	color: rgb(100, 100, 100);
+	border: none;
+	border-spacing: 10px;
+}
+
+#canvasDiv, #optDiv {
+	margin: auto;
+	text-align: center;
+}
+
+#canvasDiv {
+	height: 800;
+	width: 75%;
+	margin-top: 20px;
+}
+
+#optDiv {
+	height: 200px;
+	width: 50%;
+	margin-top: 10px;
+}
+
+#actionsOptions button {
+	height: 30px;
+	width: 70px;
+	margin: 10px 10px 0 0;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#actionsOptions { width: 30%; }
+#cyclePath      { width: 20%; }
+#nodeOptions    { width: 35%; }
+#antOptions     { width: 10%; }
+
+#actionsOptions, #nodeOptions {
+	display: table;
+	border-spacing: 20px;
+	height: 100%;
+	padding: 10px 0 0 10px;
+}
+
+#nodeOptions, #antOptions {
+	vertical-align: middle;
+	padding: 0;
+}
+
+#btnAddNode { visibility: visible; }
+
+#tdColorPicker button {
+	height: 30px;
+	width: 70px;
+}
+
+#tdRadioDir {
+	font-weight: bold;
+}
+
+#txtSPF {
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+#txtInstructions {
+	padding-top: 20%;
+	font-style: italic;
+}
+
+#antOptions table {
+	height: 100%;
+}
+
+.btnAction {
+	height: 25px;	
+	border: 1px solid;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#btnRemoveNode {
+	border-color: red;
+	color: red;
+}
+
+#btnAddNode {
+	border-color: lime;
+	color: lime;
+}
+
+.btnAction:hover {
+	cursor: pointer;
+}
+
+#defaultCanvas0 {
+	border: 1px solid black;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.jscolor {
+	display: inline;
+	color: black;
+	top: 0px;
+}
+
+.options {
+	height: 100%;
+	float: left;
+}
+

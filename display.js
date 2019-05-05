@@ -1,13 +1,13 @@
 var entries = [
 {	title: "DFT Paint",
-	dir: "./projects/Fourier-Paint/",
+	dir: "./projects/FourierPaint/",
 	thumbnail: "thumbnail.jpg",
 	description: "Convert a path into epicycles using Discrete Fourier Transform",
 	demo: "paint.html",
 	source: "https://github.com/DomKiki/DFT-Paint" },
 { 
 	title: "Langton's Ant",
-	dir: "./projects/Langton-Ant/",
+	dir: "./projects/LangtonAnt/",
 	thumbnail: "thumbnail.png",
 	gif: "thumbnail.gif",
 	description: "Play with the settings and discover amazing patterns of Langton's Ant",

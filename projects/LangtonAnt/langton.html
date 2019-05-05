@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="./style.css">
+		<title>Langton's Ant</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script>
+		<script src="mainCanvas.js"></script>
+		<script src="optionsCanvas.js"></script>
+		<script src="sketch.js"></script>
+	</head>
+	<body>
+		<div id="canvasDiv"></div>
+		<div id="optDiv">
+		
+			<span id="actionsOptions" class="options">
+				<button id="btnClear" onclick="mCanvas.clear()">Clear</button><br>
+				<button id="btnPause" onclick="mCanvas.pause()">Pause</button><br>
+				<button id="btnStep" onclick="mCanvas.oneStep()">Step</button>
+				<button id="btnFrame" onclick="mCanvas.oneFrame()">Frame</button><br>
+				<p id="txtSPF"></p>
+				<input type="range" id="sldSPF" class="slider" min="1" max="1000" value="600" onchange="mCanvas.updateSPF(this.value)">
+			</span>
+			
+			<span id="cyclePath" class="options"></span>
+			
+			<span id="nodeOptions" class="options">
+				<button id="btnAddNode" class="btnAction">Add</button>
+				<p id="txtInstructions">◄◄ Click node to edit</p>
+				<table>
+					<tr>
+						<th>Color</th>
+						<td id="tdColorPicker"></td>
+					</tr>
+					<tr>
+						<th>Direction</th>
+						<td id="tdRadioDir">
+							<form name="formDir">					
+								<input type="radio" name="rdDir" value="-1">&#x21B0;
+								<input type="radio" name="rdDir" value="0">-
+								<input type="radio" name="rdDir" value="1">&#x21B1;<br>
+								<input type="radio" name="rdDir" value="2">&#x21D1;
+								<input type="radio" name="rdDir" value="3">&#x21D2;
+								<input type="radio" name="rdDir" value="4">&#x21D3;
+								<input type="radio" name="rdDir" value="5">&#x21D0;
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"><button id="btnRemoveNode" class="btnAction">Remove</button></td>
+					</tr>
+				</table>
+			</span>
+			
+			<span id="antOptions" class="options">
+				<table>
+					<tr><td><button id="btnAddAnt">+</button></tr></td>
+					<tr><td id="tdNumberAnts"></tr></td>
+					<tr><td><button id="btnRemoveAnt" disabled>-</button></tr></td>
+				</table>
+			</span>
+		</div>
+	</body>
+</html>
