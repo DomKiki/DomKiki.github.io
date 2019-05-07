@@ -3,3 +3,11 @@ body {
 	padding: auto;
 	text-align: center;
 }
+
+#sliders table {
+	margin: auto;
+}
+
+#options button {
+	margin: 0 10px 0 10px;
+}

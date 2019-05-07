@@ -12,7 +12,14 @@ var entries = [
 	gif: "thumbnail.gif",
 	description: "Play with the settings and discover amazing patterns of Langton's Ant",
 	demo: "langton.html",
-	source: "https://github.com/DomKiki/Langton-Ant"}];
+	source: "https://github.com/DomKiki/Langton-Ant"},
+{	title: "Tesseract",
+	dir: "./projects/Tesseract/",
+	thumbnail: "thumbnail.png",
+	gif: "thumbnail.gif",
+	description: "Explore the 4th dimension by rotating a hypercube",
+	demo: "tesseract.html",
+	source: "https://github.com/DomKiki/Tesseract" }];
 
 for (var entry of entries)
 	createProject(entry);

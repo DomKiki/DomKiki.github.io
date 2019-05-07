@@ -6,8 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Tesseract</title>
 		<link rel="stylesheet" type="text/css" href="./style.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
 		<script src="P4Vector.js" type="text/javascript"></script>
 		<script src="Matrix.js" type="text/javascript"></script>
 		<script src="sketch.js" type="text/javascript"></script>
@@ -16,14 +16,17 @@
 	<body>
 
 		<div id="canvas"></div>
+		
 		<div id="sliders">
-			<input type="range" min="-3.14" max="3.14" value="0" step="0.05" id="sldXY"> XY<br />
-			<input type="range" min="-3.14" max="3.14" value="0" step="0.05" id="sldXZ"> XZ<br />
-			<input type="range" min="-3.14" max="3.14" value="0" step="0.05" id="sldYZ"> YZ<br /><br />
-			<input type="range" min="-3.14" max="3.14" value="0" step="0.05" id="sldXW"> XW<br />
-			<input type="range" min="-3.14" max="3.14" value="0" step="0.05" id="sldYW"> YW<br />
-			<input type="range" min="-3.14" max="3.14" value="0" step="0.05" id="sldZW"> ZW<br /><br />
+			<table>
+				<tr><th></th><th></th><th>Y</th><th>Z</th><th>W</th></tr>
+				<tr><th>X</th></tr>
+				<tr><th>Y</th></tr>
+				<tr><th>Z</th></tr>
+			</table>
 		</div>
+		
+		<div id="options"></div>
 
 	</body>
 
