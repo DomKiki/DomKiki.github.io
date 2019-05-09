@@ -1,25 +1,35 @@
 var entries = [
+
 {	title: "DFT Paint",
 	dir: "./projects/FourierPaint/",
 	thumbnail: "thumbnail.jpg",
 	description: "Convert a path into epicycles using Discrete Fourier Transform",
 	demo: "paint.html",
 	source: "https://github.com/DomKiki/DFT-Paint" },
-{ 
-	title: "Langton's Ant",
+	
+{ 	title: "Langton's Ant",
 	dir: "./projects/LangtonAnt/",
 	thumbnail: "thumbnail.png",
 	gif: "thumbnail.gif",
 	description: "Play with the settings and discover amazing patterns of Langton's Ant",
 	demo: "langton.html",
 	source: "https://github.com/DomKiki/Langton-Ant"},
+	
 {	title: "Tesseract",
 	dir: "./projects/Tesseract/",
 	thumbnail: "thumbnail.png",
 	gif: "thumbnail.gif",
 	description: "Explore the 4th dimension by rotating a hypercube",
 	demo: "tesseract.html",
-	source: "https://github.com/DomKiki/Tesseract" }];
+	source: "https://github.com/DomKiki/Tesseract" },
+	
+{	title: "Boid Flock",
+	dir: "./projects/BirdFlock/",
+	thumbnail: "thumbnail.png",
+	gif: "thumbnail.gif",
+	description: "Watch flocking behaviour emerge from 3 simple rules",
+	demo: "flock.html",
+	source: "https://github.com/DomKiki/BirdFlock" }];
 
 for (var entry of entries)
 	createProject(entry);
