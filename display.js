@@ -29,7 +29,15 @@ var entries = [
 	gif: "thumbnail.gif",
 	description: "Watch flocking behaviour emerge from 3 simple rules",
 	demo: "flock.html",
-	source: "https://github.com/DomKiki/BirdFlock" }];
+	source: "https://github.com/DomKiki/BirdFlock" },
+	
+{	title: "Orbit Finder",
+	dir: "./projects/2DSolarSystem/",
+	thumbnail: "thumbnail.png",
+	gif: "thumbnail.gif",
+	description: "Can you find the configuration for a stable orbit ?",
+	demo: "solarsystem.html",
+	source: "https://github.com/DomKiki/2DSolarSystem" }];
 
 for (var entry of entries)
 	createProject(entry);
