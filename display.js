@@ -37,7 +37,15 @@ var entries = [
 	gif: "thumbnail.gif",
 	description: "Can you find the configuration for a stable orbit ?",
 	demo: "solarsystem.html",
-	source: "https://github.com/DomKiki/2DSolarSystem" }];
+	source: "https://github.com/DomKiki/2DSolarSystem" }, 
+	
+{	title: "2048",
+	dir: "./projects/2048/",
+	thumbnail: "thumbnail.png",
+	gif: "thumbnail.gif",
+	description: "Reproduction of the famous Game",
+	demo: "2048.html",
+	source: "https://github.com/DomKiki/2048" }];
 
 for (var entry of entries)
 	createProject(entry);
