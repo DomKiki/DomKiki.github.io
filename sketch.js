@@ -44,8 +44,9 @@ function setup() {
 	seaPos = createVector(0, height);
 	txtPos = createVector(-txtSiz.x, height - (seaSiz.y + txtSiz.y));
 	
-	sldAli = sldCoh = sldSep = createSlider(0,5,1,0.05);
-	sldAli.style("display", "none");
+	sldAli = createSlider(0,2,1.5,0.1).style("display", "none");
+	sldCoh = createSlider(0,2,0.5,0.1).style("display", "none");
+	sldSep = createSlider(0,2,1.0,0.1).style("display", "none");
 	
 }
 
@@ -94,6 +95,7 @@ function animate(step) {
 				seaPos.y -= step;
 				if (seaPos.y <= skySiz.y) {
 					seaPos.y = skySiz.y;
+					delayTime(1.0);
 					anim = ANM_SKY_OUT;
 				}
 			}
@@ -126,7 +128,7 @@ function animate(step) {
 	
 	if (anim == -1) {
 		grid  = this.getPixels(canvas);
-		flock = this.generateFlock(grid, 10);
+		flock = this.generateFlock(grid, 5);
 	}
 	
 }
@@ -154,7 +156,6 @@ function getPixels() {
 		g[row] = new Array(width);
 	
 	loadPixels();
-	console.log(pixels);
 	var c,
 		d = pixelDensity(),
 		l = 4 * (width * d) * (height * d);
@@ -181,7 +182,5 @@ function generateFlock(g, s) {
 				b.size = s;
 				f.push(b);
 			}		
-	console.log(f.length);
 	return f;
-	
 }
