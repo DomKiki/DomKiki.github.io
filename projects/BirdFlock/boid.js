@@ -12,6 +12,8 @@ class Boid {
 		this.fov  = fov;
 		this.col  = col;
 		
+		this.size = 12;
+		
 	}
 	
 	// Alignment  : Steering towards the average velocity*
@@ -101,7 +103,7 @@ class Boid {
 	display(options) {
 		
 		// Boid
-		strokeWeight(12);
+		strokeWeight(this.size);
 		stroke(this.col);
 		point(this.pos.x, this.pos.y);
 		

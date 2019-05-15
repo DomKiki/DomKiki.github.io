@@ -10,14 +10,16 @@ const ANM_SKY_IN  = 0,
 	  ANM_SKY_OUT = 3,
 	  ANM_SEA_OUT = 4;
 	  
-var   canvas,
+var   canvas, grid,
 	  imgSky, imgSea, imgTxt,
 	  skySiz, seaSiz, txtSiz,
 	  skyPos, seaPos, txtPos;
 	  
 var   anim = 0; 
+
+var   flock = [];
 	 
-	  
+  
 function preload() {
 	imgSky = loadImage(IMG_SKY);
 	imgSea = loadImage(IMG_SEA);
@@ -38,18 +40,25 @@ function setup() {
 	
 	skyPos = createVector(0, -skySiz.y);
 	seaPos = createVector(0, height);
-	txtPos = createVector(-txtSiz.x, height-seaSiz.y-txtSiz.y);
-
+	txtPos = createVector(-txtSiz.x, height - (seaSiz.y + txtSiz.y));
+	
 }
 
 function draw() {
 
 	background(255);
 
-	this.displayImages();
-	this.animate(3);
-	
-}	  
+	if (anim != -1) {
+		this.displayImages();
+		this.animate(3);
+	}
+	else 
+		for (var b of flock) {
+			b.ACS(flock);
+			b.update();
+			b.display({ fov: false, vel: false, walls: false });
+		}
+}
 
 function animate(step) {
 	
@@ -100,13 +109,14 @@ function animate(step) {
 				skyPos.y  -= step;
 				if (skyPos.y <= -skySiz.y) {
 					skyPos.y = -skySiz.y;
-					anim = -1;
+					anim  = -1;
+					grid  = this.getPixels(canvas);
+					flock = this.generateFlock(grid);
 				}
 			}
 			break;
 			
 		default:
-			noLoop();
 			break;
 		
 	}
@@ -120,3 +130,41 @@ function displayImages() {
 	image(imgTxt, txtPos.x, txtPos.y);
 	
 }	
+
+function getPixels() {
+	
+	var g = new Array(height);
+	for (var row = 0; row < height; row++)
+		g[row] = new Array(width);
+	
+	loadPixels();
+	console.log(pixels);
+	var c,
+		d = pixelDensity(),
+		l = 4 * (width * d) * (height * d);
+	
+	var index, x, y;
+	for (var i = 0; i < l; i += 4) {
+		index = i / 4;
+		x       = floor(index / (width * d));
+		y       = (index / d) % width;
+		g[x][y] = floor(red(pixels[i]) / 255);
+	}
+	updatePixels();
+	
+	return g;	
+}
+
+function generateFlock(g) {
+	
+	var f = [];
+	for (var i = 0; i < height; i++)
+		for (var j = 0; j < width; j++)
+			if (g[i][j] == 0) {
+				b = new Boid(i, j, 10, 0);
+				b.size = 1;
+				f.push(b);
+			}		
+	return f;
+	
+}
