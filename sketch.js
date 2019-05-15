@@ -17,13 +17,13 @@ var   canvas,
 	  
 var   anim = 0; 
 	 
-/*	  
+	  
 function preload() {
 	imgSky = loadImage(IMG_SKY);
 	imgSea = loadImage(IMG_SEA);
 	imgTxt = loadImage(IMG_TXT);
 }
-*/  
+  
 function setup() {
 
 	canvas = createCanvas(800, 325);
