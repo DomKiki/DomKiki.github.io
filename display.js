@@ -1,71 +1,55 @@
-var entries = [
+/***************************** Projects ******************************/
 
-{	title: "DFT Paint",
-	dir: "./projects/FourierPaint/",
-	thumbnail: "thumbnail.jpg",
-	description: "Convert a path into epicycles using Discrete Fourier Transform",
-	demo: "paint.html",
-	source: "https://github.com/DomKiki/DFT-Paint" },
-	
-{ 	title: "Langton's Ant",
-	dir: "./projects/LangtonAnt/",
-	thumbnail: "thumbnail.png",
-	gif: "thumbnail.gif",
-	description: "Play with the settings and discover amazing patterns of Langton's Ant",
-	demo: "langton.html",
-	source: "https://github.com/DomKiki/Langton-Ant"},
-	
-{	title: "Tesseract",
-	dir: "./projects/Tesseract/",
-	thumbnail: "thumbnail.png",
-	gif: "thumbnail.gif",
-	description: "Explore the 4th dimension by rotating a hypercube",
-	demo: "tesseract.html",
-	source: "https://github.com/DomKiki/Tesseract" },
-	
-{	title: "Boid Flock",
-	dir: "./projects/BirdFlock/",
-	thumbnail: "thumbnail.png",
-	gif: "thumbnail.gif",
-	description: "Watch flocking behaviour emerge from 3 simple rules",
-	demo: "flock.html",
-	source: "https://github.com/DomKiki/BirdFlock" },
-	
-{	title: "Orbit Finder",
-	dir: "./projects/2DSolarSystem/",
-	thumbnail: "thumbnail.png",
-	gif: "thumbnail.gif",
-	description: "Can you find the configuration for a stable orbit ?",
-	demo: "solarsystem.html",
-	source: "https://github.com/DomKiki/2DSolarSystem" }, 
-	
-{	title: "2048",
-	dir: "./projects/2048/",
-	thumbnail: "thumbnail.png",
-	gif: "thumbnail.gif",
-	description: "Reproduction of the famous Game",
-	demo: "2048.html",
-	source: "https://github.com/DomKiki/2048" }];
+const MATHS = "mathsSimulations",
+	  GAMES = "gamesReproductions",
+	  LIBS  = "librariesExamples";
 
-for (var entry of entries)
-	createProject(entry);
+const JPG = ".jpg",
+	  PNG = ".png",
+	  GIF = ".gif";
+
+const DIR_PRJ = "./projects/",
+	  DIR_TMB = "./thumbnails/",
+	  DIR_IMG = "./img/",
+	  GITHUB  = "https://github.com/DomKiki/";
+
+var entries = [ makeEntry("DFT Paint",     "FourierPaint",  MATHS, [JPG],      "Convert a path into epicycles using Discrete Fourier Transform",        "paint.html",       "DFT-Paint"),
+				makeEntry("Langton's Ant", "LangtonAnt",    MATHS, [PNG, GIF], "Play with the settings and discover amazing patterns of Langton's Ant", "langton.html",     "Langton-Ant"),
+				makeEntry("Tesseract",     "Tesseract",     MATHS, [PNG, GIF], "Explore the 4th dimension by rotating a hypercube",                     "tesseract.html",   "Tesseract"),
+				makeEntry("Boid Flock",    "BirdFlock",     MATHS, [PNG, GIF], "Watch flocking behaviour emerge from 3 simple rules",                   "flock.html",       "BirdFlock"),
+				makeEntry("Gravity",       "2DSolarSystem", MATHS, [PNG, GIF], "Can you find the configuration for a stable orbit ?",                   "solarsystem.html", "2DSolarSystem"),
+				makeEntry("2048",          "2048",          GAMES, [PNG, GIF], "Reproduction of the famous sliding puzzle game",                        "2048.html",        "2048")
+];
+
+function makeEntry(t, di, p, tmb, des, dem, src) {
+	return { title:       t,
+			 dir:         di,
+			 par:         p,
+			 thumbnail:   tmb,
+			 description: des,
+			 demo:        dem,
+			 source:      src };
+}
 
 function createProject(entry) {
 	
-	var root = document.getElementById("projects");
+	var root    = document.getElementById(entry.par);
+	var content = root.querySelector(".content");
 	
-	var project = document.createElement('DIV');
+	var project = document.createElement('A');
+	project.href = DIR_PRJ + entry.dir + "/" + entry.demo;
 	project.className = "project";
-	
+		
 	var header = document.createElement('DIV');
 	header.className = "project-header";
 	
 	var thumbnail = document.createElement('DIV');
 	thumbnail.className = "project-thumbnail";
-	thumbnail.style     = "background-image: url('" + entry.dir + entry.thumbnail + "')";
-	if (entry.hasOwnProperty('gif')) {
-		thumbnail.addEventListener("mouseover", function() { this.style = "background-image: url('" + entry.dir + entry.gif       + "')"; });
-		thumbnail.addEventListener("mouseout",  function() { this.style = "background-image: url('" + entry.dir + entry.thumbnail + "')"; });
+	var thumbnailURL    = DIR_TMB + "/" + entry.dir;
+	thumbnail.style     = "background-image: url('" + thumbnailURL + entry.thumbnail[0] + "')";
+	if (entry.thumbnail.includes(GIF)) {
+		thumbnail.addEventListener("mouseover", function() { this.style = "background-image: url('" + thumbnailURL + GIF + "')"; });
+		thumbnail.addEventListener("mouseout",  function() { this.style = "background-image: url('" + thumbnailURL + entry.thumbnail[0] + "')";});
 	}
 	
 	var h3 = document.createElement('H3');
@@ -79,29 +63,19 @@ function createProject(entry) {
 	
 	var buttons = document.createElement('DIV');
 	buttons.className = "buttons";
-	
-	var demo = document.createElement('A');
-	demo.href = entry.dir + entry.demo;
-	demo.innerHTML = "Demo";
-	
+		
 	var source = document.createElement('A');
 	source.className = "small";
-	source.href = entry.source;
+	source.href = GITHUB + entry.source;
 	source.innerHTML = "Source";
 	
 	// Russian dolls
-	
 	header.appendChild(thumbnail);
 	header.appendChild(h3);
-	project.appendChild(header);
-	
 	description.appendChild(descriptionP);
+	project.appendChild(header);
 	project.appendChild(description);
-	
-	buttons.appendChild(demo);
-	buttons.appendChild(source);
-	project.appendChild(buttons);
-	
-	root.appendChild(project);
+	project.appendChild(source);
+	content.appendChild(project);
 	
 }

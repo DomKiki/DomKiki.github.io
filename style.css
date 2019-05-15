@@ -1,88 +1,152 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html,body {
-	margin:0;
-	padding:0;
-	letter-spacing:inherit;
-	color:#222;
+	letter-spacing: inherit;
+	color:          #222;
+	font-family:    'Roboto', sans-serif;
 }
 
-#projects {
-	width: 80%;
+/************************************ Header ************************************/
+
+#banner {
+	width:  800px;
+	height: 400px;
 	margin: auto;
-	padding-top: 20px;
-	text-align: center;
-	display: flex;
-	flex-wrap: wrap;
+	border: 1px solid black;
+}
+
+/*********************************** Projects ***********************************/
+
+#projects {
+	width:  80%;
+	margin: auto;
+}
+
+#mathsSimulations, #gamesReproductions {
+	margin-top:    20px;
+	border-radius: 10px;
+}
+
+#mathsSimulations {
+	background-color: rgb(150, 200, 255);
+}
+
+#gamesReproductions {
+	background-color: rgb(180, 255, 140);
+}
+
+.category-header {
+	position: relative;
+	margin:   0;
+	padding:  0;
+	width:    50%;
+}
+
+.category-header h2 {
+	display:       inline;
+	position:      absolute;
+	top:           0;
+	left:          0;
+	width:         40%;
+	margin:        0;
+	padding:       10px;
+	border-radius: 10px;
+	text-align:    center;
+}
+
+.category-header p {
+	display:    inline;
+	position:   relative;
+	top:        1.3em;
+	left:       12%;
+	font-style: italic;
+	font-size:  10pt;
+}
+
+#mathsSimulations .category-header h2 {
+	color:            rgb(50, 75, 125);
+	background-color: rgb(100, 150, 255);
+}
+
+#gamesReproductions .category-header h2 {
+	color:            rgb(90, 125, 70);
+	background-color: rgb(130, 255, 90);
+}
+
+.content  {
+	padding-top:     2.5em;
+	display:         flex;
+	flex-wrap:       wrap;
 	justify-content: space-evenly;
 }
 
 .project {
-	font-family: 'Roboto', sans-serif;
+	text-align:       center;
+	text-decoration:  none;
+	width:            13em;
 	background-color: #ECFFFF;
-	width: 300px;
-	box-shadow:0 10px 20px #eee,0 6px 6px #d5d5d5;
-	padding-bottom:1em;
-	border-radius:5px;
-	overflow:hidden;
-	margin: 20px 0;
-	display:flex;
-	flex-direction: column;
-	justify-content: space-between;
-	transition: all 500ms;
+	box-shadow:       0 10px 20px #eee,0 6px 6px #d5d5d5;
+	margin:           20px 0;
+	padding-bottom:   1em;
+	border-radius:    5px;
+	display:          flex;
+	overflow:         hidden;
+	flex-direction:   column;
+	justify-content:  space-between;
+	transition:       all 500ms;
 }
 
 .project:hover{ transform: scale(1.1, 1.1); }
 
-.project-header {
-	text-decoration: none;
-	font-style: oblique;
-	color: #00a4a4;
-}
-
 .project-header h3 {
-	font-size: 25px;
-	padding:20px 0 0 20px;
-	margin:0;
-	text-align:left;
+	font-size:       20px;
+	text-decoration: none;
+	font-style:      oblique;
+	color:           #00a4a4;
+	padding:         20px 0 0 20px;
+	margin:          0;
+	text-align:      left;
 }
 
 .project-thumbnail {
-	height: 150px;
-	background-size: cover;
+	height:              150px;
+	background-size:     cover;
 	background-position: center;
 }
 
 .project-description {
 	text-align: center;
-	height: 50px;
-	padding: 0 20px 24px 20px;
+	font-size:  11pt;
+	height:     50px;
+	padding:    0 20px 24px 20px;
 }
 
-.buttons { 
-	justify-content:space-between;
-	padding: 0 32px 0;
-}
-
-.buttons a {
-	border-radius: 10px;
-	color: #FFF;
-	background: #4DDBFF;
-	display: block;
-	width: 30%;
-	padding: 10px;
-	margin: 0px auto 5px auto;
-	font-size: 20px;
-	font-style: normal;
-	font-weight: bold;
+.project a {
+	cursor:          pointer;
+	border-radius:   10px;
+	color:           white;
+	background:      #4DDBFF;
+	display:         block;
+	width:           30%;
+	padding:         5px;
+	margin:          0px auto 5px auto;
+	font-size:       20px;
+	font-style:      normal;
+	font-weight:     bold;
 	text-decoration: none;
 }
 
-.buttons .small {
-	font-size: 12px;
-	font-weight: normal;
-	color: #EEE;
+a.small {
+	height:        5%;
+	width:         25%;
+	margin-top:    10px;
+	padding:       3px;
+	font-size:     9pt;
+	font-weight:   normal;
+	color:         #EEE;
 	border-radius: 5px;
-	width: 20%;
-	padding: 5px;
+}
+
+.hidden {
+	display: none;
 }
