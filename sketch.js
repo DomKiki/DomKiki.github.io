@@ -15,6 +15,8 @@ var   canvas, grid,
 	  skySiz, seaSiz, txtSiz,
 	  skyPos, seaPos, txtPos;
 	  
+var   sldAli, sldCoh, sldSep;
+	  
 var   anim = 0; 
 
 var   flock = [];
@@ -41,6 +43,9 @@ function setup() {
 	skyPos = createVector(0, -skySiz.y);
 	seaPos = createVector(0, height);
 	txtPos = createVector(-txtSiz.x, height - (seaSiz.y + txtSiz.y));
+	
+	sldAli = sldCoh = sldSep = createSlider(0,5,1,0.05);
+	sld.style("display", "none");
 	
 }
 
@@ -69,16 +74,6 @@ function animate(step) {
 				skyPos.y += step;
 				if (skyPos.y >= 0) {
 					skyPos.y = 0;
-					anim = ANM_SEA_IN;
-				}
-			}
-			break;
-			
-		case ANM_SEA_IN:
-			if (seaPos.y > 225) {
-				seaPos.y -= step;
-				if (seaPos.y <= skySiz.y) {
-					seaPos.y = skySiz.y;
 					anim = ANM_TXT_IN;
 				}
 			}
@@ -89,16 +84,16 @@ function animate(step) {
 				txtPos.x += (3 * step);
 				if (txtPos.x >= 0) {
 					txtPos.x = 0;
-					anim = ANM_SEA_OUT;
+					anim = ANM_SEA_IN;
 				}
 			}
 			break;
-
-		case ANM_SEA_OUT:
-			if (seaPos.y < height) {
-				seaPos.y += step;
-				if (seaPos.y >= height) {
-					seaPos.y = height;
+			
+		case ANM_SEA_IN:
+			if (seaPos.y > 225) {
+				seaPos.y -= step;
+				if (seaPos.y <= skySiz.y) {
+					seaPos.y = skySiz.y;
 					anim = ANM_SKY_OUT;
 				}
 			}
@@ -109,9 +104,17 @@ function animate(step) {
 				skyPos.y  -= step;
 				if (skyPos.y <= -skySiz.y) {
 					skyPos.y = -skySiz.y;
-					anim  = -1;
-					grid  = this.getPixels(canvas);
-					flock = this.generateFlock(grid);
+					anim = ANM_SEA_OUT;
+				}
+			}
+			break;
+
+		case ANM_SEA_OUT:
+			if (seaPos.y < height) {
+				seaPos.y += step;
+				if (seaPos.y >= height) {
+					seaPos.y = height;
+					anim = -1;
 				}
 			}
 			break;
@@ -119,6 +122,11 @@ function animate(step) {
 		default:
 			break;
 		
+	}
+	
+	if (anim == -1) {
+		grid  = this.getPixels(canvas);
+		flock = this.generateFlock(grid);
 	}
 	
 }
