@@ -20,7 +20,8 @@ var   sldAli, sldCoh, sldSep;
 var   anim  = 0,
 	  sleep = 0; 
 
-var   flock = [];
+var   flock = [],
+	  opt   = { fov: false, vel: false, walls: false };
 	 
   
 function preload() {
@@ -67,7 +68,7 @@ function draw() {
 		for (var b of flock) {
 			b.ACS(flock);
 			b.update();
-			b.display({ fov: false, vel: false, walls: false });
+			b.display(opt);
 		}
 
 }
@@ -133,6 +134,9 @@ function animate(step) {
 	}
 	
 	if (anim == -1) {
+		noStroke();
+		fill(255);
+		rect(0,0,width,height);
 		grid  = this.getPixels(canvas);
 		flock = this.generateFlock(grid, 5);
 	}
@@ -186,6 +190,7 @@ function generateFlock(g, s) {
 			if (g[i][j] == 0) {
 				b = new Boid(i, j, 10, 0);
 				b.size = s;
+				b.display(opt);
 				f.push(b);
 			}		
 	return f;
