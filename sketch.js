@@ -17,7 +17,8 @@ var   canvas, grid,
 	  
 var   sldAli, sldCoh, sldSep;
 	  
-var   anim = 0; 
+var   anim  = 0,
+	  sleep = 0; 
 
 var   flock = [];
 	 
@@ -51,12 +52,16 @@ function setup() {
 }
 
 function draw() {
-
+	
 	background(255);
 
 	if (anim != -1) {
 		this.displayImages();
-		this.animate(3);
+		if (sleep == 0) {
+			this.animate(3);
+		}
+		else
+			sleep--;
 	}
 	else 
 		for (var b of flock) {
@@ -64,6 +69,7 @@ function draw() {
 			b.update();
 			b.display({ fov: false, vel: false, walls: false });
 		}
+
 }
 
 function animate(step) {
@@ -95,7 +101,7 @@ function animate(step) {
 				seaPos.y -= step;
 				if (seaPos.y <= skySiz.y) {
 					seaPos.y = skySiz.y;
-					delayTime(1.0);
+					sleep = 300;
 					anim = ANM_SKY_OUT;
 				}
 			}
