@@ -126,7 +126,7 @@ function animate(step) {
 	
 	if (anim == -1) {
 		grid  = this.getPixels(canvas);
-		flock = this.generateFlock(grid);
+		flock = this.generateFlock(grid, 10);
 	}
 	
 }
@@ -136,6 +136,14 @@ function displayImages() {
 	image(imgSky, skyPos.x, skyPos.y);
 	image(imgSea, seaPos.x, seaPos.y);
 	image(imgTxt, txtPos.x, txtPos.y);
+	
+	/*noFill();
+	stroke(0,0,255);
+	rect(skyPos.x, skyPos.y, skySiz.x, skySiz.y);
+	stroke(0);
+	rect(seaPos.x, seaPos.y, seaSiz.x, seaSiz.y);
+	stroke(255,0,0);
+	rect(txtPos.x, txtPos.y, txtSiz.x, txtSiz.y);*/
 	
 }	
 
@@ -163,16 +171,17 @@ function getPixels() {
 	return g;	
 }
 
-function generateFlock(g) {
+function generateFlock(g, s) {
 	
 	var f = [];
-	for (var i = 0; i < height; i++)
-		for (var j = 0; j < width; j++)
+	for (var i = 0; i < height; i += s)
+		for (var j = 0; j < width; j += s)
 			if (g[i][j] == 0) {
 				b = new Boid(i, j, 10, 0);
-				b.size = 1;
+				b.size = s;
 				f.push(b);
 			}		
+	console.log(f.length);
 	return f;
 	
 }
