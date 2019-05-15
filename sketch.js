@@ -45,7 +45,7 @@ function setup() {
 	txtPos = createVector(-txtSiz.x, height - (seaSiz.y + txtSiz.y));
 	
 	sldAli = sldCoh = sldSep = createSlider(0,5,1,0.05);
-	sld.style("display", "none");
+	sldAli.style("display", "none");
 	
 }
 
