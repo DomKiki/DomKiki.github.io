@@ -49,7 +49,6 @@ function draw() {
 	this.displayImages();
 	this.animate(3);
 	
-	
 }	  
 
 function animate(step) {
@@ -102,12 +101,12 @@ function animate(step) {
 				if (skyPos.y <= -skySiz.y) {
 					skyPos.y = -skySiz.y;
 					anim = -1;
-					noLoop();
 				}
 			}
 			break;
 			
 		default:
+			noLoop();
 			break;
 		
 	}
@@ -116,18 +115,8 @@ function animate(step) {
 	 
 function displayImages() {
 	
-	//noStroke();
-	// Sky
-	/*fill(0);
-	rect(skyPos.x, skyPos.y, skySiz.x, skySiz.y);*/
 	image(imgSky, skyPos.x, skyPos.y);
-	// Sea
-	/*fill(0,0,255);
-	rect(seaPos.x, seaPos.y, seaSiz.x, seaSiz.y);*/
 	image(imgSea, seaPos.x, seaPos.y);
-	// Txt
-	/*fill(255);
-	rect(txtPos.x, txtPos.y, txtSiz.x, txtSiz.y);*/
 	image(imgTxt, txtPos.x, txtPos.y);
 	
 }	
