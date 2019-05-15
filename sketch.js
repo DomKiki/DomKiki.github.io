@@ -134,10 +134,11 @@ function animate(step) {
 	}
 	
 	if (anim == -1) {
+		this.displayImages();
+		grid = this.getPixels(canvas);
 		noStroke();
 		fill(255);
 		rect(0,0,width,height);
-		grid  = this.getPixels(canvas);
 		flock = this.generateFlock(grid, 5);
 	}
 	
