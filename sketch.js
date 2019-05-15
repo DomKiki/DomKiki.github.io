@@ -10,7 +10,7 @@ var   canvas,
 function preload() {
 	imgSky = loadImage(IMG_SKY);
 	imgSea = loadImage(IMG_SEA);
-	imgTxt = loadImage(IMG_TXT);
+	//imgTxt = loadImage(IMG_TXT);
 }
 	  
 function setup() {
@@ -27,7 +27,7 @@ function draw() {
 
 	image(imgSky,0,0);
 	image(imgSea,0,225);
-	image(imgTxt,0,225);
+	//image(imgTxt,0,225);
 	
 	noLoop();
 
