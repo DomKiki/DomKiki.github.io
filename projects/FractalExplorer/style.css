@@ -1,0 +1,16 @@
+body {
+	margin: 20px auto auto auto;
+	text-align: center;
+}
+
+#sliders {
+	width: 500px;
+	margin: auto;
+}
+
+#popup {
+	height: 200px;
+	width: 200px;
+	visibility: hidden;
+	border: 1px solid black;
+}
