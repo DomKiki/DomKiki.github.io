@@ -4,22 +4,65 @@ html,body {
 	letter-spacing: inherit;
 	color:          #222;
 	font-family:    'Roboto', sans-serif;
+	font-size: 12pt;
 }
 
 /************************************ Header ************************************/
 
 #banner {
-	width:  800px;
-	height: 325px;
-	margin: auto;
-	border: 1px solid #CCC;
+	height:              150px;
+	background-image:    url("./img/banner.png");
+	background-position: center;
+	background-size:     cover;
+	background-repeat:   no-repeat;
+	text-align:          center;
+	margin:              auto;
+	border:              1px solid #CCC;
+}
+
+/*********************************** Welcome ************************************/
+
+#welcome, #aboutMe {
+	margin-top: 5em;
+	text-align: center;
+	font-size:  30pt;
+}
+
+#welcome a {
+	color:           #0000cc;
+	text-decoration: none;
+	font-style:      italic;
+}
+
+#welcome .note {
+	font-size: 12pt;
+}
+
+/************************************ Navig *************************************/
+
+#navigation {
+	margin-top: 1em;
+	text-align: center;
+}
+
+#navigation a {
+	text-decoration: none;
+	font-weight:     bold;
+	color:           #50009f;
+	padding:         0.5em;
+}
+
+#navigation a:hover {
+	cursor:        pointer;
+	border-top:    2px solid #50009f;
+	border-bottom: 2px solid #50009f;
 }
 
 /*********************************** Projects ***********************************/
 
 #projects {
-	width:  80%;
-	margin: auto;
+	width:   80%;
+	margin:  auto;
 }
 
 #mathsSimulations, #gamesReproductions {
@@ -119,6 +162,7 @@ html,body {
 	font-size:  11pt;
 	height:     50px;
 	padding:    0 20px 24px 20px;
+	color:      #50009f;
 }
 
 .project a {

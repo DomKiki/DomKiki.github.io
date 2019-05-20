@@ -14,13 +14,15 @@ const DIR_PRJ = "./projects/",
 	  GITHUB  = "https://github.com/DomKiki/";
 
 var entries = [ makeEntry("DFT Paint",        "FourierPaint",    MATHS, [JPG],      "Convert a path into epicycles using Discrete Fourier Transform",        "paint.html",       "DFT-Paint"),
+				makeEntry("Boid Flock",       "BirdFlock",       MATHS, [PNG, GIF], "Watch flocking behaviour emerge from 3 simple rules",                   "flock.html",       "BirdFlock"),
 				makeEntry("Langton's Ant",    "LangtonAnt",      MATHS, [PNG, GIF], "Play with the settings and discover amazing patterns of Langton's Ant", "langton.html",     "Langton-Ant"),
 				makeEntry("Tesseract",        "Tesseract",       MATHS, [PNG, GIF], "Explore the 4th dimension by rotating a hypercube",                     "tesseract.html",   "Tesseract"),
-				makeEntry("Boid Flock",       "BirdFlock",       MATHS, [PNG, GIF], "Watch flocking behaviour emerge from 3 simple rules",                   "flock.html",       "BirdFlock"),
 				makeEntry("Gravity",          "2DSolarSystem",   MATHS, [PNG, GIF], "Can you find the configuration for a stable orbit ?",                   "solarsystem.html", "2DSolarSystem"),
-				makeEntry("2048",             "2048",            GAMES, [PNG, GIF], "Reproduction of the famous sliding puzzle game",                        "2048.html",        "2048"),
-				makeEntry("Fractal Explorer", "FractalExplorer", MATHS, [PNG, GIF], "Visual Interactive tool to explore Mandelbrot / Julia sets",            "fractal.html",     "FractalExplorer")
+				makeEntry("Fractal Explorer", "FractalExplorer", MATHS, [PNG, GIF], "Visual Interactive tool to explore Mandelbrot / Julia sets",            "fractal.html",     "FractalExplorer"),
+				makeEntry("2048",             "2048",            GAMES, [PNG, GIF], "Sliding Puzzle game",                                                   "2048.html",        "2048")
 ];
+for (var e of entries)
+	createProject(e);
 
 function makeEntry(t, di, p, tmb, des, dem, src) {
 	return { title:       t,
@@ -79,4 +81,21 @@ function createProject(entry) {
 	project.appendChild(source);
 	content.appendChild(project);
 	
+}
+
+/****************************** Navigation ***************************/
+
+var divWelcome  = document.getElementById("welcome"),
+	divProjects = document.getElementById("projects");
+	//divAboutMe  = document.getElementById("aboutMe");
+
+var btnProjects = document.getElementById("btnProject");
+	//btnAboutMe  = document.getElementById("btnAboutMe");
+	
+btnProject.addEventListener("click", displayProjects);
+
+function displayProjects() {
+	divWelcome.classList.add("hidden");
+	//divAboutMe.classList.add("hidden");
+	divProjects.classList.remove("hidden");
 }

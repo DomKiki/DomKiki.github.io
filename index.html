@@ -7,20 +7,33 @@
 		<link rel="stylesheet" type="text/css" href="./style.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
-		<script src="display.js"></script>
-		<script src="./projects/BirdFlock/boid.js"></script>
-		<script src="sketch.js" type="text/javascript"></script>
+		<!--script src="./projects/BirdFlock/boid.js"></script>
+		<script src="sketch.js" type="text/javascript"></script-->
 		<title>Domfolio</title>
 	</head>
 	
 	<body>
 	
 		<div id="header">
-			<div id="banner"></div>
-			<div id="navigation"></div>
+			<a href=""><div id="banner"></div></a>
+			<div id="navigation">
+				<a id="btnProject">Projects</a>
+				<!--a id="btnAboutMe">About Me</a-->
+			</div>
+		</div>
+		
+		<div id="welcome">
+			<p>Welcome to the DomFolio code repository !<br/ ><br/ >
+			   Play around with the various maths<br/ >
+			   simulations and little games in here !<br/ ><br/ >
+			   <span class="note">
+			   All projects are made using the <a href="http://p5js.org/">p5.js</a> library
+			   and open sourced under the <a href="https://www.gnu.org/licenses/quick-guide-gplv3.en.html">GNU GPLv3</a> license.
+			   </span>
+			</p>
 		</div>
 	
-		<div id="projects">
+		<div id="projects" class="hidden">
 			<div id="mathsSimulations">
 				<span class="category-header">
 					<h2>Maths</h2>
@@ -37,6 +50,10 @@
 			</div>
 		</div>
 		
+		<!--div id="aboutMe"></div-->
+		
 	</body>
+	
+	<script src="display.js"></script>
 	
 </html>
