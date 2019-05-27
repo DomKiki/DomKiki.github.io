@@ -19,10 +19,9 @@ var entries = [ makeEntry("DFT Paint",        "FourierPaint",    MATHS, [JPG],  
 				makeEntry("Tesseract",        "Tesseract",       MATHS, [PNG, GIF], "Explore the 4th dimension by rotating a hypercube",                     "tesseract.html",   "Tesseract"),
 				makeEntry("Gravity",          "2DSolarSystem",   MATHS, [PNG, GIF], "Can you find the configuration for a stable orbit ?",                   "solarsystem.html", "2DSolarSystem"),
 				makeEntry("Fractal Explorer", "FractalExplorer", MATHS, [PNG, GIF], "Visual Interactive tool to explore Mandelbrot / Julia sets",            "fractal.html",     "FractalExplorer"),
-				makeEntry("2048",             "2048",            GAMES, [PNG, GIF], "Sliding Puzzle game",                                                   "2048.html",        "2048")
+				makeEntry("2048",             "2048",            GAMES, [PNG, GIF], "Sliding Puzzle game",                                                   "2048.html",        "2048"),
+				makeEntry("Snake",            "Snake",           GAMES, [PNG, GIF], "Retro game revisited",                                                  "snake.html",       "Snake")
 ];
-for (var e of entries)
-	createProject(e);
 
 function makeEntry(t, di, p, tmb, des, dem, src) {
 	return { title:       t,
@@ -84,18 +83,24 @@ function createProject(entry) {
 }
 
 /****************************** Navigation ***************************/
-
-var divWelcome  = document.getElementById("welcome"),
-	divProjects = document.getElementById("projects");
-	//divAboutMe  = document.getElementById("aboutMe");
-
-var btnProjects = document.getElementById("btnProject");
-	//btnAboutMe  = document.getElementById("btnAboutMe");
 	
-btnProject.addEventListener("click", displayProjects);
+var navProjects, navAboutMe;
+
+$(document).ready(function() {
+	
+	navProjects = document.getElementById("navProjects");
+	navProjects.addEventListener("click", displayProjects);
+	
+});
 
 function displayProjects() {
-	divWelcome.classList.add("hidden");
-	//divAboutMe.classList.add("hidden");
-	divProjects.classList.remove("hidden");
+	console.log("coin");
+	$("#welcome").addClass("hidden");
+	$("#projects").removeClass("hidden");
+	//$("#aboutMe").addClass("hidden");
 }
+
+/***************************** Entry point ***************************/
+
+for (var e of entries)
+	createProject(e);

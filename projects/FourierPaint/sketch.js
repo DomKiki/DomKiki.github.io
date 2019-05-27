@@ -34,7 +34,7 @@ var maxValues    = [];
 
 // HTML / CSS related
 var btnSize      = 50;
-var btnSpace     = 5;
+var btnSpace     = 10;
 var btnStyle     = "width: " + btnSize + "px; height: "+ btnSize + "px;";
 var kSliderText, kSlider,
     radSort, btnSort, btnLooping, btnOrder;
@@ -191,7 +191,7 @@ function makeInstructions() {
 	var infoSize  = [650, 100];		
 	var str = "<span class='bold'>Draw</span> in the canvas with the mouse.<br><br><span class='bold'>Drag & drop</span> an image to trace it.";
 	createText(str, "dndInfo", p, [0,0], [0,0], infoSize[0], infoSize[1])
-		.position(width / 2 - infoSize[0] / 2, height / 2 - infoSize[1]);
+		.position(width / 2 - infoSize[0] / 5, height / 2 - infoSize[1] / 2);
 	createText("En/disable Loop", c, p, select('#btnLooping').position(),  offset,     labelSize, labelSize);
 	createText("Sorting order",   c, p, select('#btnOrder').position(),    offset,     labelSize, labelSize);
 	createText("Sorting param",   c, p, select('#btnSort').position(),     offset,     labelSize, labelSize);

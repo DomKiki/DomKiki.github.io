@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../../style.css">
 	<link rel="stylesheet" type="text/css" href="./style.css">
     <title>DFT Paint</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
@@ -11,7 +12,16 @@
     <script src="sketch.js"></script>
   </head>
   <body>
+  
+	<div id="header">
+		<a href=""><div id="banner"></div></a>
+		<div id="navigation">
+			<a id="navProjects">Projects</a>
+		</div>
+	</div>
+  
 	<div id="canvasDiv"></div>
+	
 	<div id="infosDiv"></div>
 	<div id="buttonDiv">
 		<button id="btnLooping"  class="square" onclick="pressLoop()">Loop</button>

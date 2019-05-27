@@ -4,10 +4,15 @@ body      {
 } 
 
 /********************** Canvas ********************/
+#canvasDiv {
+	text-align: center;
+}
+
 .p5Canvas { 
 	margin: 20px 0 0 20px;
 	border: 1px solid black;
 }
+
 .p5Canvas.highlight {
 	border: 1px dashed red;
 }
