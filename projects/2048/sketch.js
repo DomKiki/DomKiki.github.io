@@ -10,104 +10,29 @@ const startNum   = 2;
 const colors     = [ "#FFFFFF", "#FFFFFF", "#FFFFCC", "#FFCC99", "#FFCC00", "#FF0000", "#CC0099", "#6600FF", 
 					 "#0000FF", "#006699", "#00CC00", "#99FF99", "#0099cc", "#003399", "#000000" ];
 
-const generations     = 1,
-	  specimensPerGen = 1000,
-	  batchSize       = 100;
-					 
 /****************** Global variables *****************/
 
-var grid, oGrid, flat;
+var grid;
 
-var score   = 0,
-	scoreTxt,
-	record  = 0,
-	records = [];
+var score = 0,
+	scoreTxt;
 	
 var gameOver = false;
 
-var frame,
-	changed;
-
-var brain, fittest,
-	rewards, expected, pred, move,
-	idSpecimen, idGeneration = -1;
-	
 /********************** p5 Methods *******************/
 
 function setup() {
 	
     var canvas = createCanvas(canvasSize, canvasSize);
 	canvas.parent("canvas");
+	
 	scoreTxt = select("#score");
 	
-	this.resetGame();
-	this.nextGeneration();
-	this.update();
+	initGrid();
+	feedGrid(startNum);
 	
-	error = [];
-	
-	/*var btn = createButton("Frame");
-	btn.mousePressed(drawG);*/
-	
-	frameRate(3);
-	//noLoop();
-}
-
-function draw() {
-	
-	// One specimen is running at a time
-	if (idSpecimen < specimensPerGen) {
-		// Play once per second until game over
-		// Prediction in range [0:3] (left/right, up/down)
-		if ((!gameOver) && (changed)) {
-			
-			flat = this.flattenGrid(grid);
-			
-			// Simulate one move ahead and compute the rewards
-			rewards  = this.simulateMoves(grid);
-			// Expected prediction
-			expected = new Array(4).fill(0.0);
-			expected[maxIndex(rewards)] = 1.0;
-			// Actual prediction
-			pred     = this.brain.predict(flat);
-			move     = maxIndex(pred);
-			
-			// Apply move
-			changed = this.applyMove(floor(move / 2), move % 2);
-			// Back-propagate error through NN
-			// this.brain.train(flat, expected);	!! This has an unintended side-effect, model.predict() will output NaN's !! To work on
-			// Save error
-			if (error.length >= batchSize) {
-				// Average error
-				var sum = 0;
-				for (var i = 0; i < error.length; i++)
-					sum += error[i];
-				sum /= error.length;
-				console.log("Error : " + (sum * 100) + "%");
-				error = [];
-			}
-			else {
-				error.push(this.brain.computeError(pred, expected));
-				console.log(error);
-			}
-			
-		}
-		else {
-			if (score > record) {
-				record  = score;
-				fittest = this.brain.clone();
-			}
-			idSpecimen++;
-			this.resetGame();
-			update();
-		}
-	}
-	else {
-		noLoop();
-		/*record = this.getFittest(records, 2);
-		fittest = record[0].tf.reproduce(record[1].tf);
-		this.nextGeneration();*/
-	}
+	update();
+	noLoop();
 	
 }
 
@@ -143,12 +68,6 @@ function keyPressed() {
 			return;		
 	}
 	
-	this.applyMove(a,d);
-	
-}
-
-function applyMove(a, d, show=true) {
-	
 	// Copy for further change check
 	var g = copyGrid(grid),
 		p = copyGrid(grid);
@@ -165,46 +84,19 @@ function applyMove(a, d, show=true) {
 		g = rotateGrid(g, 3);
 	
 	// Save changes
-	grid = copyGrid(g);
+	grid = g;
 		
-	// Feed new number into the grid if something moved (disabled if !show because it's only for move simulation)
-	var changed = !gridEquals(p);
-	if ((changed) && (show)) {
+	// Feed new number into the grid if something moved
+	if (!gridEquals(p))
 		feedGrid();
-		update();
-	}
+	
+	// Display
+	update();
 	
 	// Game Over : display final score
 	gameOver = isGameOver();
 	if (gameOver)
 		updateScore();
-	
-	return changed;
-	
-}
-
-function simulateMoves() {
-		
-	var current,
-		dScore,
-		scores = [];
-	
-	for (var m = 0; m < 4; m++) {
-		
-		// Current
-		oGrid  = this.copyGrid(grid);	
-		dScore = score;
-		this.applyMove(floor(m / 2), m % 2, false);
-		// deltaScore (current - previous)
-		dScore = score - dScore;
-		scores.push((gameOver) ? -score : dScore);
-		// Reset
-		grid   = this.copyGrid(oGrid);
-		score -= dScore;
-		
-	}
-	
-	return scores;
 	
 }
 
@@ -326,42 +218,6 @@ function combineGrid(g, axis, dir) {
 	
 }
 
-// Reduces a 2D array into 1D
-function flattenGrid(g) {
-	var res = new Array(g.length * g[0].length),
-		cpt = 0;
-	for (var i = 0; i < g.length; i++)
-		for (var j = 0; j < g[i].length; j++)
-			res[cpt++] = grid[i][j];
-	return res;
-}
-
-// Resets the grid
-function resetGrid() {
-	initGrid();
-	//feedGrid(startNum);
-	grid[1][1] = 2;
-	grid[1][3] = 2;
-}
-
-/************************ Array **********************/
-
-function maxIndex(arr) {
-	
-	if (arr.length === 0)
-		return -1;
-	
-	var max = -Infinity;
-	var ind = -1;
-	for (var i = 0; i < arr.length; i++)
-		if (arr[i] > max) {
-			max = arr[i];
-			ind = i;
-		}
-		
-	return ind;
-}
-
 /************************ Data ***********************/
 
 function updateScore() { 
@@ -382,44 +238,6 @@ function isGameOver() {
 			else if ((j < (gridSize - 1)) && (grid[i][j] == grid[i][j+1]))
 				return false;
 	return true;
-}
-
-// Resets board, score and neural network (mutated)
-function resetGame() {
-	
-	// Neural network
-	if (typeof fittest === "undefined")
-		brain  = new TensorFlowWrapper(16, 64, 4);
-	/*else
-		brain  = fittest.clone();
-	brain.mutate(0.1, 0.5);*/
-		
-	gameOver   = false;
-	changed    = true;
-	score      = 0;
-	this.resetGrid();
-	
-}
-
-// Increases counters and resets game
-function nextGeneration() {
-	idGeneration++;
-	idSpecimen = 0;
-	this.resetGame();
-}
-
-// Gets n fittest of an array
-function getFittest(arr, n) {
-	records.sort(compareFitness);
-	return records.slice(records.length - n, records.length);
-}
-
-function compareFitness(a,b) {
-	if (a.fit < b.fit)
-		return -1;
-	if (a.fit > b.fit)
-		return 1;
-	return 0;
 }
 
 /*********************** Display *********************/
