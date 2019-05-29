@@ -175,7 +175,7 @@ var p5Game = function(p) {
     p.showWalls = function() {
         let cpt = 0;
         for (let w of walls) { 
-            p.fill(0, cpt * 10, cpt++ * 25);
+            p.fill(0);
             p.rect(w.pos.x, w.pos.y, w.size.x, w.size.y);
         }
     }
