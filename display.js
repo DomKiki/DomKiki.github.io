@@ -87,14 +87,13 @@ function createProject(entry) {
 var navProjects, navAboutMe;
 
 $(document).ready(function() {
-	
-	navProjects = document.getElementById("navProjects");
-	navProjects.addEventListener("click", displayProjects);
+
+	displayProjects();
 	
 });
 
 function displayProjects() {
-	console.log("coin");
+	
 	$("#welcome").addClass("hidden");
 	$("#projects").removeClass("hidden");
 	//$("#aboutMe").addClass("hidden");

@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html,body {
-	letter-spacing: inherit;
-	color:          #222;
-	font-family:    'Roboto', sans-serif;
+	letter-spacing:     inherit;
+	color:            #222;
+	font-family:       'Roboto', sans-serif;
+	background-color: #e6ffff;
 }
 
 /************************************ Header ************************************/
@@ -28,7 +29,7 @@ html,body {
 }
 
 #welcome a {
-	color:           #0000cc;
+	color:         #0000cc;
 	text-decoration: none;
 	font-style:      italic;
 }
@@ -42,18 +43,20 @@ html,body {
 #navigation {
 	margin-top:      1em;
 	text-align:      center;
-	color:         #50009f;
 	font-weight:     bold;
-	text-decoration: none;
 }
 
 #navigation .ariane {
 	font-size:       20px;
+	text-decoration: none;
+	color:         #50009f;
 }
 
 #navigation a {
 	font-size:       25px;
 	padding:         0.2em;
+	text-decoration: none;
+	color:         #50009f;
 }
 
 #navigation a:hover {
@@ -193,6 +196,43 @@ a.small {
 	font-weight:   normal;
 	color:         #EEE;
 	border-radius: 5px;
+}
+
+/******************* Description ******************/
+h4 {
+	font-weight:     normal;
+	font-size:       25px;
+	text-decoration: underline;
+}
+
+#description {
+	margin:        20px auto 20px auto;
+	padding:       10px;
+	border:        1px dotted black;
+	border-radius: 10px;
+	width:         50%;
+	font:          20px arial;
+	color:       #b3b3cc;
+	background:    white;
+}
+
+#description p {
+	margin-left: 50px;
+}
+
+#description a {
+	font-weight:     bold;
+	text-decoration: none;
+	color:         #b3b3cc;
+}
+
+#description .little {
+	height: 200px;
+}
+
+#description img {
+	margin: 10px auto 10px auto;
+	display: block;
 }
 
 .hidden {
