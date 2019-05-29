@@ -14,40 +14,75 @@ body      {
 }
 
 .p5Canvas.highlight {
-	border: 1px dashed red;
+	border:        5px dashed rgb(0, 195, 255);
+	border-radius: 5px;
 }
 
 /************* Buttons, Slider, Radios ************/
-.buttonDiv {
-	margin: auto;
+#buttonDiv table {
+	margin:     auto;
+	text-align: center;
 }
-.square {
+#buttonDiv table th {
+	text-decoration: none;
+	font-style:      italic;
+	font-weight:     normal;
+	color:         #AAAAAA;
+}
+.square, .empty, #buttonDiv table th {
 	height: 50px;
-	width: 50px;
+	width:  50px;
 }
-#btnReplay, #btnClear {
+#btnClear, #btnReplay {
 	font-size: 30px;
 }
 .slider {
 	width: 100px;
 }
 #kSliderText {
-	height: 100px;
-	width: 100px;
 	text-align: center;
 	font-size: 20px;
 }
 #radioSort input {
-	disabled: true;
+	pointer-events: none;
 }
 
-/****************** Instructions ******************/
-.dndInfo {
-	font: 30px arial;
-	color: #b3b3cc;
-	text-align: center;
-	font-style: oblique;
+/******************* Description ******************/
+h4 {
+	font-weight:     normal;
+	font-size:       25px;
+	text-decoration: underline;
 }
+
+#description {
+	margin:        20px auto 20px auto;
+	padding:       10px;
+	border:        1px dotted black;
+	border-radius: 10px;
+	width:         50%;
+	font:          20px arial;
+	color:       #b3b3cc;
+}
+
+#description p {
+	margin-left: 50px;
+}
+
+#description a {
+	font-weight:     bold;
+	text-decoration: none;
+	color:         #b3b3cc;
+}
+
+#description .little {
+	height: 200px;
+}
+
+#description img {
+	margin: 10px auto 10px auto;
+	display: block;
+}
+
 .instructions {
 	font: 16px arial;
 	color: #b3b3cc;
@@ -57,8 +92,4 @@ body      {
 }
 .hidden {
 	visibility: hidden;
-}
-.bold {
-	color: grey;
-	font-weight: bold;
 }

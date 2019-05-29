@@ -40,15 +40,20 @@ html,body {
 /************************************ Navig *************************************/
 
 #navigation {
-	margin-top: 1em;
-	text-align: center;
+	margin-top:      1em;
+	text-align:      center;
+	color:         #50009f;
+	font-weight:     bold;
+	text-decoration: none;
+}
+
+#navigation .ariane {
+	font-size:       20px;
 }
 
 #navigation a {
-	text-decoration: none;
-	font-weight:     bold;
-	color:           #50009f;
-	padding:         0.5em;
+	font-size:       25px;
+	padding:         0.2em;
 }
 
 #navigation a:hover {

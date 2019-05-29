@@ -1,45 +1,45 @@
 /****************** Global variables *****************/
 
 // States
-const STT_IDLE   = 0;
-const STT_DRAW   = 1;
-const STT_RENDER = 2;
-var   state      = STT_DRAW;
-var   looping    = false;
+const STT_IDLE   = 0,
+	  STT_DRAW   = 1,
+	  STT_RENDER = 2;
+var   state      = STT_DRAW,
+	  looping    = false;
 
 // Sorting
-const SORT_FREQ  = 0;
-const SORT_AMP   = 1;
-const SORT_PHS   = 2;
-const SORT_RE    = 3;
-const SORT_IM    = 4;
-const SORT_ASC   = 0;
-const SORT_DSC   = 1;
-var   sortLabels = ["Freq", "Amp", "Phase", "Re", "Im"];
-var   sortIndex  = SORT_AMP;
-var   sortOrders = ["Asc", "Desc"];
-var   sortOrder  = SORT_ASC;
+const SORT_FREQ  = 0,
+	  SORT_AMP   = 1,
+	  SORT_PHS   = 2,
+	  SORT_RE    = 3,
+      SORT_IM    = 4,
+      SORT_ASC   = 0,
+	  SORT_DSC   = 1;
+
+var   sortLabels = ["Freq", "Amp", "Phase", "Re", "Im"],
+	  sortIndex  = SORT_AMP,
+	  sortOrders = ["Asc", "Desc"],
+	  sortOrder  = SORT_ASC;
 
 // Canvas
-var canvas;
-var img;
+var canvas,
+	img;
 
 // Values
-var time         = 0;
-var signalX		 = [];
-var signalY		 = [];
-var values       = [];
-var userValues   = [];
-var maxValues    = [];
+var time         = 0,
+	signalX		 = [],
+	signalY		 = [],
+	values       = [],
+	userValues   = [],
+	maxValues    = [];
 
 // HTML / CSS related
-var btnSize      = 50;
-var btnSpace     = 10;
-var btnStyle     = "width: " + btnSize + "px; height: "+ btnSize + "px;";
-var kSliderText, kSlider,
-    radSort, btnSort, btnLooping, btnOrder;
-var tutoVisible  = true;
-var divTuto;
+var btnSize      = 50,
+	btnSpace     = 10,
+	btnStyle     = "width: " + btnSize + "px; height: "+ btnSize + "px;",
+	kSliderText, kSlider,
+	radSort, btnSort, btnLooping, btnOrder, btnReplay, btnClear,
+	highlighted  = false;
 
 /********************* p5 Methods ********************/
 
@@ -47,53 +47,27 @@ function setup() {
 	
 	canvas = createCanvas(1200, 800);
 	canvas.parent("canvasDiv");
-	
-	divTuto = select("#infosDiv");
 
 	var btn = 1;
 	
-	// Looping button
-	btnLooping = select('#btnLooping');
-	btnLooping.position(width - btn * (btnSize + btnSpace), height + (btnSize + btnSpace), btnSize, btnSize);
-	btn += 2;
-	
-	// Order button
-	btnOrder = select('#btnOrder');
-	btnOrder.position(width - btn++ * (btnSize + btnSpace), height + (btnSize + btnSpace), btnSize, btnSize);
-	
-	// Sort button and radios
-	btnSort = select('#btnSort');
-	btnSort.position(width - btn * (btnSize + btnSpace), height + (btnSize + btnSpace), btnSize, btnSize)
-	       .html(sortLabels[sortIndex]);
-	var radSpan = select('#radioSort');
-	radSort = selectAll('input', radSpan);
-	radSpan.position(width - btn * (btnSize + btnSpace) + ((2 * btnSize + btnSpace) / 2) - (radSpan.width / 2), height + (btnSize + btnSpace) + 70, btnSize, btnSize);
-	btn += 2;
-	
-	// Replay button
-	var btnReplay = select('#btnReplay');
-	btnReplay.position(width - btn++ * (btnSize + btnSpace), height + (btnSize + btnSpace), btnSize, btnSize);
-	
-	// Clear button
-	var btnClear = select('#btnClear');
-	btnClear.position(width - btn++ * (btnSize + btnSpace), height + (btnSize + btnSpace), btnSize, btnSize);
+	// Buttons
+	btnLooping  = select('#btnLooping');
+	btnOrder    = select('#btnOrder');
+	btnSort     = select('#btnSort');
+	btnSort.html(sortLabels[sortIndex]);
+	btnReplay   = select('#btnReplay');
+	btnClear    = select('#btnClear');
+	radSort     = selectAll('input', '#radioSort');
 	
 	// Orbits slider and text
-	kSlider = select('#kSlider');
-	var w = kSlider.width;
-	kSlider.position(width  - btn * (btnSize + btnSpace) - w, height + 2 * btnSize - 20);
-	
+	kSlider     = select('#kSlider');	
 	kSliderText = select('#kSliderText');
-	kSliderText.position(width  - btn * (btnSize + btnSpace) - w, height + 2 * btnSize - 60);
 	
 	// Drag & Drop background image
-	for (e of [canvas, divTuto])
-		e.dragOver(highlight)
-		 .dragLeave(unhighlight)
-		 .drop(backgroundImg);
-	
-	// Tutorial
-	makeInstructions();
+	canvas.drop(backgroundImg)
+		  .dragOver(highlight)
+	 	  .dragLeave(unhighlight);
+		  
 	
 }
 
@@ -138,14 +112,8 @@ function draw() {
 	else {
 			
 		// Save user values 
-		if ((mouseIsPressed) && (mouseInbounds())) {
+		if ((mouseIsPressed) && (mouseInbounds()))
 			userValues.push(createVector(mouseX, mouseY));
-			// Tutorial flag
-			if (tutoVisible) {
-				tutoVisible = false;
-				showInstructions(false);
-			}
-		}
 			
 		// Draw
 		stroke(50);
@@ -179,47 +147,6 @@ function initCanvas() {
 	kSliderText.html(str);
 	
 	
-}
-
-function makeInstructions() {
-	
-	var labelSize = btnSize + 20;
-	var offset    = [-10, -100];
-	var c = "instructions",
-		p = "infosDiv";
-	
-	var infoSize  = [650, 100];		
-	var str = "<span class='bold'>Draw</span> in the canvas with the mouse.<br><br><span class='bold'>Drag & drop</span> an image to trace it.";
-	createText(str, "dndInfo", p, [0,0], [0,0], infoSize[0], infoSize[1])
-		.position(width / 2 - infoSize[0] / 5, height / 2 - infoSize[1] / 2);
-	createText("En/disable Loop", c, p, select('#btnLooping').position(),  offset,     labelSize, labelSize);
-	createText("Sorting order",   c, p, select('#btnOrder').position(),    offset,     labelSize, labelSize);
-	createText("Sorting param",   c, p, select('#btnSort').position(),     offset,     labelSize, labelSize);
-	createText("Replay Cycles",   c, p, select('#btnReplay').position(),   offset,     labelSize, labelSize);
-	createText("Clear Screen",    c, p, select('#btnClear').position(),    offset,     labelSize, labelSize);
-	createText("Limit Orbits",    c, p, select('#kSliderText').position(), [20, -105], labelSize, labelSize);
-	
-	showInstructions(true);
-		
-}
-
-function showInstructions(show) {
-	tutoVisible = true;
-	var txt = selectAll('p', divTuto);
-	for (t of txt)
-		if (show)
-			t.removeClass('hidden');
-		else
-			t.addClass('hidden');
-	
-}
-
-function createText(txt, clas, par, pos, off, w, h) {
-	return createP(txt)
-		.parent(par)
-		.size(w, h)
-		.position(pos.x + off[0], pos.y + off[1])
-		.class(clas);
 }
 
 /*********************** Maths ***********************/
@@ -434,12 +361,16 @@ function switchRadio(index, state) {
 
 /******************** Drag & Drop ********************/
 
-function highlight(event)    { 
+function highlight(event) {
 	event.preventDefault(); 
-	canvas.addClass('highlight');
+	if (!highlighted) {
+		canvas.addClass('highlight');
+		highlighted = true;
+	}
 }
 function unhighlight() { 
 	canvas.removeClass('highlight'); 
+	highlighted = false;
 }
 function backgroundImg(file) { 
 	img = createImg(file.data).hide(); 
