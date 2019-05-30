@@ -17,7 +17,6 @@ var entries = [ makeEntry("DFT Paint",        "FourierPaint",    MATHS, [JPG],  
 				makeEntry("Boid Flock",       "BirdFlock",       MATHS, [PNG, GIF], "Watch flocking behaviour emerge from 3 simple rules",                   "flock.html",       "BirdFlock"),
 				makeEntry("Langton's Ant",    "LangtonAnt",      MATHS, [PNG, GIF], "Play with the settings and discover amazing patterns of Langton's Ant", "langton.html",     "Langton-Ant"),
 				makeEntry("Tesseract",        "Tesseract",       MATHS, [PNG, GIF], "Explore the 4th dimension by rotating a hypercube",                     "tesseract.html",   "Tesseract"),
-				makeEntry("Gravity",          "2DSolarSystem",   MATHS, [PNG, GIF], "Can you find the configuration for a stable orbit ?",                   "solarsystem.html", "2DSolarSystem"),
 				makeEntry("Fractal Explorer", "FractalExplorer", MATHS, [PNG, GIF], "Visual Interactive tool to explore Mandelbrot / Julia sets",            "fractal.html",     "FractalExplorer"),
 				makeEntry("2048",             "2048",            GAMES, [PNG, GIF], "Sliding Puzzle game",                                                   "2048.html",        "2048"),
 				makeEntry("Snake",            "Snake",           GAMES, [PNG, GIF], "Retro game revisited",                                                  "snake.html",       "Snake")

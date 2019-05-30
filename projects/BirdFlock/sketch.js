@@ -20,7 +20,7 @@ var btnFov,
 
 function setup() {
 	
-    var canvas = createCanvas(1200, 800);
+    var canvas = createCanvas(800, 600);
 	canvas.parent("canvas");
 	
 	for (var i = 0; i < 100; i++)
@@ -45,7 +45,7 @@ function setup() {
 			.parent("buttons")
 			.mouseClicked(pressVel);
 	
-	btnWalls = createButton("Walls (alpha)")
+	btnWalls = createButton("Walls (Beta)")
 			  .parent("buttons")
 			  .mouseClicked(pressWalls);
 	
@@ -53,7 +53,7 @@ function setup() {
 
 function draw() {
 	
-    background(0);
+    background(255);
 	
 	if (options.walls) {
 		strokeWeight(1);	

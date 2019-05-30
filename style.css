@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html,body {
+	margin:             0;
 	letter-spacing:     inherit;
 	color:            #222;
 	font-family:       'Roboto', sans-serif;
@@ -16,7 +17,7 @@ html,body {
 	background-size:     cover;
 	background-repeat:   no-repeat;
 	text-align:          center;
-	margin:              auto;
+	margin:              0;
 	border:              1px solid #CCC;
 }
 
@@ -41,19 +42,19 @@ html,body {
 /************************************ Navig *************************************/
 
 #navigation {
-	margin-top:      1em;
+	margin:          1em auto 1em auto;
 	text-align:      center;
 	font-weight:     bold;
 }
 
 #navigation .ariane {
-	font-size:       20px;
+	font-size:       15px;
 	text-decoration: none;
 	color:         #50009f;
 }
 
 #navigation a {
-	font-size:       25px;
+	font-size:       20px;
 	padding:         0.2em;
 	text-decoration: none;
 	color:         #50009f;
@@ -211,13 +212,13 @@ h4 {
 	border:        1px dotted black;
 	border-radius: 10px;
 	width:         50%;
-	font:          20px arial;
 	color:       #b3b3cc;
-	background:    white;
+	background:  white;
 }
 
 #description p {
 	margin-left: 50px;
+	font:        15px arial;
 }
 
 #description a {

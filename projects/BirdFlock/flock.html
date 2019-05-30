@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Bird Flock</title>
+		<link rel="stylesheet" type="text/css" href="../../style.css">
 		<link rel="stylesheet" type="text/css" href="./style.css">
 		<script type="text/javascript" src="../../p5/p5.min.js"></script>
 		<script type="text/javascript" src="../../p5/p5.dom.min.js"></script>
@@ -15,6 +16,15 @@
 
 	<body>
 
+		<div id="header">
+			<a href="../../index.html"><div id="banner"></div></a>
+			<div id="navigation">
+				<a id="navProjects" href="../../projects.html">Projects</a>
+				<span class="ariane">></a>
+				<span class="ariane">Boid Flock</a>
+			</div>
+		</div>
+
 		<div id="canvas"></div>
 		<div id="options">
 			<div id="sliders">
@@ -22,6 +32,40 @@
 			</div>
 			<div id="buttons"></div>
 		</div>
+
+		<div id="description">
+			<h4>Theory</h4>
+			<p>
+				<a href="https://www.red3d.com/cwr/index.html">Craig Reynolds</a> first made this model back in 1986 to simulate animal motion
+				such as bird flocks and fish schools. It consists of three simple <a href="https://www.red3d.com/cwr/steer/">steering behaviours</a>
+				to describe how each generic flocking creature (or <i>boid</i>) behaves based on its <u>nearby</u> flockmates, defined by its Field of View or <i>FoV</i>.
+				<table>
+					<tr>
+						<td><img height="100px" src="https://www.red3d.com/cwr/boids/images/separation.gif" alt="Source: Red3d" /></td>
+						<td><img height="100px" src="https://www.red3d.com/cwr/boids/images/alignment.gif" alt="Source: Red3d" /></td>
+						<td><img height="100px" src="https://www.red3d.com/cwr/boids/images/cohesion.gif" alt="Source: Red3d" /></td>
+					</tr>
+					<tr>
+						<td><b>Separation</b> from flockmates</td>
+						<td><b>Alignment</b> with the average heading </td>
+						<td><b>Cohesion</b> towards the average position</td>
+					</tr>
+				</table>
+
+			</p>
+			<h4>Practice</h4>
+			<p>
+				Each <i>boid</i> starts with a random position and velocity. We then update their velocity with the method described above,
+				and apply it to their position. The world is wrapped on itself so the <i>boids</i> don't fly off.<br>
+				When walls are added, we simply add another steering force, stronger as the <i>boid</i> is closer to the wall.
+				Not that realistic given that they don't really have any destination, still amusing to watch.
+			</p>
+			<h4>Controls</h4>
+			<p><center>
+				Use the <b>sliders</b> to enhance/diminish the forces.<br><br>
+				Press the <b>buttons</b> to en/disable <i>FoV</i>, Velocity and Walls.
+			</center></p>
+			</div>
 		
 	</body>
 

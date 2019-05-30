@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../../style.css">
-	<link rel="stylesheet" type="text/css" href="./style.css">
-    <title>DFT Paint</title>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Bird Flock</title>
+		<link rel="stylesheet" type="text/css" href="../../style.css">
+		<link rel="stylesheet" type="text/css" href="./style.css">
 		<script type="text/javascript" src="../../p5/p5.min.js"></script>
 		<script type="text/javascript" src="../../p5/p5.dom.min.js"></script>
-		<script type="text/javascript" src="../../p5/p5.sound.min.js"></script>
-    <script src="sketch.js"></script>
-  </head>
-  <body>
-  
+		<script src="sketch.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+
 		<div id="header">
 			<a href="../../index.html"><div id="banner"></div></a>
 			<div id="navigation">
@@ -21,75 +22,82 @@
 				<span class="ariane">DFT Paint</a>
 			</div>
 		</div>
-		
+
 		<div id="canvasDiv"></div>
-		
-		<div id="buttonDiv">
-			<table>
-				<tr id="infos">
-					<th>Limit orbits</th>
-					<th></th>
-					<th>Clear screen</th>
-					<th>Replay</th>
-					<th></th>
-					<th>Sorting parameter</th>
-					<th>Sorting order</th>
-					<th></th>
-					<th>Enable loop</th>
-				</tr>
-				<tr>
-					<td><input type="range" min="1" max="1" value="1" class="slider" id="kSlider"></td>
-					<td class="empty"></td>
-					<td><button id="btnClear"    class="square" onclick="pressClear()">&#x239A;</button></td>
-					<td><button id="btnReplay"   class="square" onclick="pressReplay()">&#x25B6;</button></td>
-					<td class="empty"></td>
-					<td><button id="btnSort"     class="square" onclick="pressSort()">Amp</button></td>
-					<td><button id="btnOrder"    class="square" onclick="pressOrder()">Asc</button></td>
-					<td class="empty"></td>
-					<td><button id="btnLooping"  class="square" onclick="pressLoop()">Loop</button></td>
-				</tr>
-				<tr>
-					<td id="kSliderText"></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td id="radioSort" colspan="3">
-						<input type="radio" name="rdSort" value="Freq"  disabled>
-						<input type="radio" name="rdSort" value="Amp"   checked>
-						<input type="radio" name="rdSort" value="Phase" disabled>
-						<input type="radio" name="rdSort" value="Re"    disabled>
-						<input type="radio" name="rdSort" value="Im"    disabled>
-					</td>
-				</tr>
-			</table>
-		</div>
-		
-		<div id="description">
-			<h4>Theory</h4>
-			<p>
-				The <a href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">Discrete Fourier Transform</a> (or <i>DFT</i>) is a mathematical tool in signal processing. 
-				It converts a discrete sequence of samples into a <a href="https://en.wikipedia.org/wiki/Complex_number">complex-valued</a> frequency function of the same length.
-				Said in a simpler way, it decomposes any finite signal into a frequency function, as shown below.<br>
-				<img class="little" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Fourier_transform_time_and_frequency_domains.gif" alt="Source : Wikipedia" />
-				The <i>DFT</i> transforms a sequence of <i>N</i> complex numbers <b>{Xn} := x0, x1, ..., x(N-1)</b><br>
-				into another sequence of complex numbers <b>{Xk} := X0, X1, ..., X(N-1)</b> defined by
-				<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7fd128c54d01b4f1c65a0ee972a77b07dfc99605" alt="Source: Wikipedia" />
-			</p>
-			<h4>Practice</h4>
-			<p>
-				We'll take any arbitrary signal, here the user's mouse input when he/she drags it on the canvas. 
-				We'll then compute the signal's <i>DFT</i> and represent each frequency with a circle 
-				orbiting around the previous one (also known as <a href="https://en.wikipedia.org/wiki/Epicycloid"><i>epicycles</i></a>).
-				Their combined rotations will produce a single output, the <i>DFT</i>'s sum, which is the corresponding input point.
-				We can then watch the inputs represented as an <i>epicycloid</i> curve !
-			</p>
-			<h4>Controls</h4>
-			<p><center>
-				<b>Draw</b> in the canvas with the mouse.<br><br>
-				<b>Drag & drop</b> an image to have it in the background while tracing it.
-			</center></p>
+		<div id="options">
+			<div id="sliders">
+				<table></table>
+			</div>
+			<div id="buttons"></div>
 		</div>
 
-  </body>
+		<div id="buttonDiv">
+				<table>
+					<tr id="infos">
+						<th>Limit orbits</th>
+						<th></th>
+						<th>Clear screen</th>
+						<th>Replay</th>
+						<th></th>
+						<th>Sorting parameter</th>
+						<th>Sorting order</th>
+						<th></th>
+						<th>Enable loop</th>
+					</tr>
+					<tr>
+						<td><input type="range" min="1" max="1" value="1" class="slider" id="kSlider"></td>
+						<td class="empty"></td>
+						<td><button id="btnClear"    class="square" onclick="pressClear()">&#x239A;</button></td>
+						<td><button id="btnReplay"   class="square" onclick="pressReplay()">&#x25B6;</button></td>
+						<td class="empty"></td>
+						<td><button id="btnSort"     class="square" onclick="pressSort()">Amp</button></td>
+						<td><button id="btnOrder"    class="square" onclick="pressOrder()">Asc</button></td>
+						<td class="empty"></td>
+						<td><button id="btnLooping"  class="square" onclick="pressLoop()">Loop</button></td>
+					</tr>
+					<tr>
+						<td id="kSliderText"></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td id="radioSort" colspan="2">
+							<input type="radio" name="rdSort" value="Freq"  disabled>
+							<input type="radio" name="rdSort" value="Amp"   checked>
+							<input type="radio" name="rdSort" value="Phase" disabled>
+							<input type="radio" name="rdSort" value="Re"    disabled>
+							<input type="radio" name="rdSort" value="Im"    disabled>
+						</td>
+					</tr>
+				</table>
+			</div>
+				
+			<div id="description">
+				<h4>Theory</h4>
+				<p>
+					The <a href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">Discrete Fourier Transform</a> (or <i>DFT</i>) is a mathematical tool in signal processing. 
+					It converts a discrete sequence of samples into a <a href="https://en.wikipedia.org/wiki/Complex_number">complex-valued</a> frequency function of the same length.
+					Said in a simpler way, it decomposes any finite signal into a frequency function, as shown below.<br>
+					<img class="little" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Fourier_transform_time_and_frequency_domains.gif" alt="Source : Wikipedia" />
+					The <i>DFT</i> transforms a sequence of <i>N</i> complex numbers <b>{Xn} := x0, x1, ..., x(N-1)</b><br>
+					into another sequence of complex numbers <b>{Xk} := X0, X1, ..., X(N-1)</b> defined by
+					<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/7fd128c54d01b4f1c65a0ee972a77b07dfc99605" alt="Source: Wikipedia" />
+				</p>
+				<h4>Practice</h4>
+				<p>
+					We'll take any arbitrary signal, here the user's mouse input when he/she drags it on the canvas. 
+					We'll then compute the signal's <i>DFT</i> and represent each frequency with a circle 
+					orbiting around the previous one (also known as <a href="https://en.wikipedia.org/wiki/Epicycloid"><i>epicycles</i></a>).
+					Their combined rotations will produce a single output, the <i>DFT</i>'s sum, which is the corresponding input point.
+					We can then watch the inputs represented as an <i>epicycloid</i> curve !
+				</p>
+				<h4>Controls</h4>
+				<p><center>
+					<b>Draw</b> in the canvas with the mouse.<br><br>
+					<b>Drag & drop</b> an image to have it in the background while tracing it.
+				</center></p>
+			</div>
+		
+	</body>
+
 </html>

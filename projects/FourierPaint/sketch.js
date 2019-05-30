@@ -45,7 +45,7 @@ var btnSize      = 50,
 
 function setup() {
 	
-	canvas = createCanvas(1200, 800);
+	canvas = createCanvas(800, 600);
 	canvas.parent("canvasDiv");
 
 	var btn = 1;

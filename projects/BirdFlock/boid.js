@@ -1,6 +1,6 @@
 class Boid {
 	
-	constructor(x, y, fov=50, col=255) {
+	constructor(x, y, fov=50, col=100) {
 		
 		this.pos = createVector(x,y);
 		this.vel  = p5.Vector.random2D().setMag(random(3, 5));

@@ -1,16 +1,6 @@
-body      { 
-	padding: 0; 
-	margin: 0;
-} 
-
 /********************** Canvas ********************/
 #canvasDiv {
 	text-align: center;
-}
-
-.p5Canvas { 
-	margin: 20px 0 0 20px;
-	border: 1px solid black;
 }
 
 .p5Canvas.highlight {
@@ -42,6 +32,9 @@ body      {
 #kSliderText {
 	text-align: center;
 	font-size: 20px;
+}
+#radioSort {
+	padding-left: 10px;
 }
 #radioSort input {
 	pointer-events: none;
