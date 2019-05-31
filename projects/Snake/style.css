@@ -1,9 +1,3 @@
-body {
-    margin: 0;
+#scoreCanvas, #gameCanvas {
     text-align: center;
-}
-
-canvas {
-    margin-top: 2em;
-    border: 1px solid black;
 }

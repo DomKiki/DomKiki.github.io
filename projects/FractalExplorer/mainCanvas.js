@@ -15,8 +15,7 @@ var mainCanvas = function(p) {
 	p.setup = function() {
 		
 		canvas = p.createCanvas(800,800)
-				.parent("canvas")
-				.style("border", "1px solid black");
+				.parent("canvas");
 		
 		p.initSliders();
 		p.noLoop();
@@ -39,10 +38,8 @@ var mainCanvas = function(p) {
 	// Inits the canvas
 	p.initCanvas = function() {
 		
-		canvas = p.createCanvas((range.maxX - range.minX) / step.x,
-							    (range.maxY - range.minY) / step.y)			
+		canvas = p.createCanvas(800,800)
 				.parent("canvas")
-				.style("border", "1px solid black")
 				.mousePressed(p.focusNumber);
 				
 		squareSize = p.createVector((p.width * step.x) / (range.maxX - range.minX),
@@ -101,9 +98,9 @@ var mainCanvas = function(p) {
 		
 		p.translate(translate.x * p.width, translate.y * p.height);
 		p.noStroke();
-		var c, coords, col;
+		var c, coords, mu, col;
 		for (var i = 0; i < grid_c.length; i++)
-			for (var j = 0; j < grid_c[i].length; j++) {
+			for (var j = 0; j < grid_c[i].length; j++) { 
 				col    = iterationColor(grid_i[i][j], maxIterations);
 				p.fill(col);
 				p.stroke(col);
@@ -122,10 +119,10 @@ var mainCanvas = function(p) {
 		sldMaxX   = p.makeSlider(0.5,   10.0,   2.0,   0.1, p.select("#sldMaxX"),   p.updateMaxX);
 		sldMinY   = p.makeSlider(-10.0, -1.0,  -1.8,   0.1, p.select("#sldMinY"),   p.updateMinY);
 		sldMaxY   = p.makeSlider(1.0,   10.0,   1.8,   0.1, p.select("#sldMaxY"),   p.updateMaxY);
-		sldStepX  = p.makeSlider(0.005,  0.1, 0.005, 0.005, p.select("#sldStepX"),  p.updateStepX);
-		sldStepY  = p.makeSlider(0.005,  0.1, 0.005, 0.005, p.select("#sldStepY"),  p.updateStepY);
-		sldMaxIte = p.makeSlider(100,  10000,   300,   100, p.select("#sldMaxIte"), p.updateMaxIte);
-		sldMaxMag = p.makeSlider(  1,     10,     2,     1, p.select("#sldMaxMag"), p.updateMaxMag);
+		sldStepX  = p.makeSlider(0.001,  0.1, 0.005, 0.001, p.select("#sldStepX"),  p.updateStepX);
+		sldStepY  = p.makeSlider(0.001,  0.1, 0.005, 0.001, p.select("#sldStepY"),  p.updateStepY);
+		sldMaxIte = p.makeSlider(0,     1000,   100,    50, p.select("#sldMaxIte"), p.updateMaxIte);
+		sldMaxMag = p.makeSlider(  1,     10,   2.0,   0.1, p.select("#sldMaxMag"), p.updateMaxMag);
 		sldTranslateX = p.createSlider(0,   1,   0.5,  0.05).parent("sldTranslateX").changed(p.updateTranslateX);
 		sldTranslateY = p.createSlider(0,   1,   0.5,  0.05).parent("sldTranslateY").changed(p.updateTranslateY);
 		
@@ -154,7 +151,7 @@ var mainCanvas = function(p) {
 			.mousePressed(p.go);
 			
 		popUp = p.select("#popup")
-			   .mousePressed(p.hidePopup);
+			   .mousePressed(hidePopup);
 			
 	}
 	p.makeSlider = function(min, max, val, stp, par, callback) {
@@ -208,11 +205,5 @@ var mainCanvas = function(p) {
 	
 	p.displayRangeX = function() { txtRangeX.html(range.minX + " ≤ x ≤ " + range.maxX); }
 	p.displayRangeY = function() { txtRangeY.html(range.minY + " ≤ y ≤ " + range.maxY); }
-
-	p.hidePopup = function() { popUp.style("visibility", "hidden"); }
-	p.showPopup = function() { 
-		popUp.position(mouseX, mouseY);
-		popUp.style("visibility", "visible"); 
-	}
 
 }

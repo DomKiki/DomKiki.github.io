@@ -76,8 +76,9 @@ var p5Game = function(p) {
         
     }
     
-    p.keyPressed = function() {
+    p.keyPressed = function(event) {
         
+        event.preventDefault();
         // Avoid moving multiple times per frame
         if (movable) {
 

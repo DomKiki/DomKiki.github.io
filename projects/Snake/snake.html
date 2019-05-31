@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Snake</title>
+		<link rel="stylesheet" type="text/css" href="../../style.css">
 		<link rel="stylesheet" type="text/css" href="./style.css">
 		<script type="text/javascript" src="../../p5/p5.min.js"></script>
 		<script type="text/javascript" src="../../p5/p5.dom.min.js"></script>
@@ -16,8 +17,41 @@
 
 	<body>
 
+		<div id="header">
+			<a href="../../index.html"><div id="banner"></div></a>
+			<div id="navigation">
+				<a id="navProjects" href="../../projects.html">Projects</a>
+				<span class="category">> Games ></a>
+				<span class="ariane">Snake</a>
+			</div>
+		</div>
+
 		<div id="scoreCanvas"></div>
 		<div id="gameCanvas"></div>
+
+		<div id="description">
+
+				<h4>Rules</h4>
+				<ul>
+					<li>
+						Use the <b>directional arrows</b> to control the Snake's direction.<br> 
+						Going backwards is not possible (e.g pressing Down while going upwards)
+					</li>
+					<br> 
+					<li><b>Eat</b> food (blue-ish) to grow</li>
+					<br> 
+					<li>
+						<b>Avoid</b> poison (red) and own tail.<br>
+						The world is open but beware of the walls (black).
+					</li>
+					<br> 
+					<li>
+						A portal is granted each 5 completed levels.<br>
+						Press the <b>Spacebar</b> to place the portal (two steps)
+					</li>
+				</ul>
+
+		</div>
 		
 	</body>
 

@@ -54,7 +54,7 @@ var popupCanvas = function(p) {
 		
 		// Clear canvas
 		p.fill(255);
-		p.noStroke();
+		p.stroke(255);
 		p.rect(0, 0, p.width, p.height);
 		p.translate(p.width / 2, p.height / 2);
 		var c, coords, col;

@@ -47,6 +47,12 @@ html,body {
 	font-weight:     bold;
 }
 
+#navigation .category {
+	font-size:       18px;
+	text-decoration: none;
+	color:         #50009f;
+}
+
 #navigation .ariane {
 	font-size:       15px;
 	text-decoration: none;
@@ -205,6 +211,7 @@ h4 {
 	font-size:       25px;
 	text-decoration: underline;
 	text-align:      left;
+	margin: 0;
 }
 
 #description {

@@ -90,5 +90,5 @@ function iterationColor(n, max) {
 
 /*********************** Pop-up **********************/
 
-function hidePopup() { popUp.style("visibility", "hidden");  }
-function showPopup() { popUp.style("visibility", "visible"); }
+function hidePopup() { popUp.class("hidden");       }
+function showPopup() { popUp.removeClass("hidden"); }

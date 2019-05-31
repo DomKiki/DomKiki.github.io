@@ -1,16 +1,20 @@
-body {
-	margin: 20px auto auto auto;
+#canvas {
 	text-align: center;
 }
 
 #sliders {
-	width: 500px;
-	margin: auto;
+	width:      500px;
+	height:     300px;
+	margin:     auto;
+	text-align: center;
 }
 
 #popup {
-	height: 200px;
-	width: 200px;
-	visibility: hidden;
-	border: 1px solid black;
+	height:     200px;
+	width:      200px;
+	border:     1px solid black;
+}
+
+.example {
+	height: 500px;
 }

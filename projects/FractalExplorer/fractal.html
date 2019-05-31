@@ -4,7 +4,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Mandelbrot</title>
+		<title>Fractal Explorer</title>
+		<link rel="stylesheet" type="text/css" href="../../style.css">
 		<link rel="stylesheet" type="text/css" href="./style.css">
 		<script type="text/javascript" src="../../p5/p5.min.js"></script>
 		<script type="text/javascript" src="../../p5/p5.dom.min.js"></script>
@@ -15,6 +16,15 @@
 	</head>
 
 	<body>
+
+		<div id="header">
+			<a href="../../index.html"><div id="banner"></div></a>
+			<div id="navigation">
+				<a id="navProjects" href="../../projects.html">Projects</a>
+				<span class="category">> Maths ></a>
+				<span class="ariane">Fractal Explorer</a>
+			</div>
+		</div>
 
 		<div id="canvas"></div>
 		
@@ -55,15 +65,56 @@
 					<td id="txtMaxIte"></td>
 				</tr>
 				<tr>
-					<th>Magnitude</th>
+					<th>Modulus</th>
 					<td id="sldMaxMag"></td>
 					<td id="txtMaxMag"></td>
 				</tr>
-				<tr><td colspan="4" id="btnGo"></td></tr>
+				<tr>
+					<td colspan="2"></td>
+					<td id="btnGo"></td>
+				</tr>
 			</table>
 		</div>
 		
-		<span id="popup"></span>
+		<span id="popup" class="hidden"></span>
+
+		<div id="description">
+
+				<h4>Theory</h4>
+				<p>
+					The Mandelbrot set is the set of <a href="https://en.wikipedia.org/wiki/Complex_number">complex numbers</a> <i>c</i> for which
+					the function <b>f<sub>c</sub>(z<sub>n</sub>) = z<sub>(n-1)</sub><sup>2</sup> + c</b> does not diverge when <b>z<sub>0</sub> = 0</b>.<br><br>
+					Named after the mathematician <a href="https://en.wikipedia.org/wiki/Benoit_Mandelbrot">Benoit Mandelbrot</a>, its representation
+					is created by sampling the complex numbers and testing for each one of them (<i>c</i>) if the above function, when iterated, makes <i>c</i> diverge to infinity or not.<br>
+					In practise, we'll consider <i>c</i> to <u>converge</u> if it reaches the maximum iterations.<br>
+					Similarly, we'll consider <i>c</i> to <u>diverge</u> if its modulus reaches the maximum value.<br><br>
+					Treating the real and imaginary parts of <i>c</i> as coordinates on the <a href="https://en.wikipedia.org/wiki/Complex_plane">complex plane</a>,
+					we can then color each pixel according to the number of iterations it took it to diverge.<br>
+					If it didnt', we just make it black.<br><br>
+					The Mandelbrot set is related to <a href="https://en.wikipedia.org/wiki/Julia_set">Julia sets</a> in such a way that every point in the complex plane corresponds to a whole Julia set.<br>
+				</p>
+				<img class="example" src="https://www.karlsims.com/julias-and-mandelbrot.jpg" alt="Source: KarlSims" />
+				<p>
+					If the point doesn't belong to the Mandelbrot set then its corresponding Julia set will consist of nothing but isolated points<sup><a href="http://www.alunw.freeuk.com/mandelbrotroom.html">[ref]</a></sup>,<br>
+					otherwise it will be a single, connected figure.
+				</p>
+
+				<h4>Controls</h4>
+				<p>Use the <b>sliders</b> to control the simulation's parameters :</p>
+				<ul>
+					<li><i>Range</i> : Min and Max values of the axis</li>
+					<li><i>Step</i> : Difference between two discrete points on the axis</li>
+					<li><i>Translation</i> : Offset on the axis</li>
+					<li><i>Iterations</i> : Max iterations</li>
+					<li><i>Modulus</i> : Max modulus</li>
+				</ul>
+				<center><p>
+					Click <b>Go</b> to launch the simulation.<br>
+					<u>Be patient and give it a couple of seconds to compute</u> !<br><br>
+					Once it's done, <b>click</b> anywhere in the canvas to display the<br><i>Julia set</i> corresponding to that complex number.
+				</p></center>
+			
+		</div>
 		
 	</body>
 
