@@ -8,6 +8,7 @@ var optionsCanvas = function(p) {
 	// Little circle targeted for options modification
 	var target;
 	
+	var backgroundColor;
 	var btnAddNode, btnRemoveNode;
 	var btnAddAnt,  btnRemoveAnt;
 	var divNodeOptions;
@@ -18,8 +19,8 @@ var optionsCanvas = function(p) {
 	p.setup = function() {
 		
 		canvas = p.createCanvas(200, 200);
-		p.background(255);
 		canvas.mousePressed(p.editColor);
+		backgroundColor = p.color("#e6ffff")
 				
 		radius = p.floor(p.width * 0.75) / 2.0;
 		
@@ -51,6 +52,8 @@ var optionsCanvas = function(p) {
 	p.draw = function() { p.drawCycle(); }
 	
 	p.drawCycle = function() {
+		
+		p.background(backgroundColor);
 		
 		var d = [p.width / 2, p.height / 2];
 		var offset = 40;

@@ -88,7 +88,7 @@ function setup() {
 
 function draw() {
 
-    background(220);
+    background(255);
 	strokeWeight(3);
 	stroke(10);
 	noFill();

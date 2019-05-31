@@ -204,6 +204,7 @@ h4 {
 	font-weight:     normal;
 	font-size:       25px;
 	text-decoration: underline;
+	text-align:      left;
 }
 
 #description {
@@ -221,6 +222,11 @@ h4 {
 	font:        15px arial;
 }
 
+#description ul {
+	margin-left: 80px;
+	font:        15px arial;
+}
+
 #description a {
 	font-weight:     bold;
 	text-decoration: none;
@@ -232,7 +238,7 @@ h4 {
 }
 
 #description img {
-	margin: 10px auto 10px auto;
+	margin: 20px auto 20px auto;
 	display: block;
 }
 

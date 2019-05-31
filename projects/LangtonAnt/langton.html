@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../../style.css">
 		<link rel="stylesheet" type="text/css" href="./style.css">
 		<title>Langton's Ant</title>
 		<script type="text/javascript" src="../../p5/p5.min.js"></script>
@@ -14,6 +15,16 @@
 		<script src="sketch.js"></script>
 	</head>
 	<body>
+
+		<div id="header">
+			<a href="../../index.html"><div id="banner"></div></a>
+			<div id="navigation">
+				<a id="navProjects" href="../../projects.html">Projects</a>
+				<span class="ariane">></a>
+				<span class="ariane">Langton's Ant</a>
+			</div>
+		</div>
+
 		<div id="canvasDiv"></div>
 		<div id="optDiv">
 		
@@ -56,7 +67,7 @@
 				</table>
 			</span>
 			
-			<span id="antOptions" class="options">
+			<span id="AntOptions" class="options">
 				<table>
 					<tr><td><button id="btnAddAnt">+</button></tr></td>
 					<tr><td id="tdNumberAnts"></tr></td>
@@ -64,5 +75,46 @@
 				</table>
 			</span>
 		</div>
+
+		<div id="description">
+
+			<h4>Theory</h4>
+			<p>
+				The Langton's Ant is a <a href="https://en.wikipedia.org/wiki/Cellular_automaton">cellular automaton</a> invented by <a href="https://en.wikipedia.org/wiki/Christopher_Langton">Christopher Langton</a>.
+				It is said to be one of the simplest systems to illustrate emergent behaviour.<br>
+				The rules are simple indeed : the world is made of colored squares ; the Ant turns right or left according to the 
+				color of the square it's on, and changes said color before moving forward.
+			</p>
+			<img class="little" src="https://upload.wikimedia.org/wikipedia/commons/0/09/LangtonsAntAnimated.gif" alt="Source: Wikipedia" />
+			<p>
+				A set of rules can then be expressed as a scheme of <b>R</b>ight and <b>L</b>eft, for example <i>LRRL</i>.<br>
+				The original Langton's Ant (shown above) has the simplest scheme of all : <i>RL</i>. It is nonetheless<br><br>
+				Fun fact : although it's never been proven, all finite set of rules will eventually result in what is referred to as a <a href="https://en.wikipedia.org/wiki/Langton%27s_Ant#Modes_of_behavior">highway</a>, 
+				meaning the Ant will build the same recurrent structure indefinitely.<br><br>
+				The scheme is here visually represented as a cycle with color nodes for easier understanding of the Ant's behaviour.<br>
+				It has also been extended to <b>7 possible behaviours</b> : 90° CW (Right), No change, 90° CCW (Left), UP, RIGHT, DOWN and LEFT.<br>
+				The first 3 are relative, the next 4 are absolute, meaning they don't depend on the current Ant's direction.
+			</p>
+
+			<h4>Controls</h4>
+			<p>The left-hand <b>buttons</b> control the simulation progress :<br></p>
+			<ul>
+				<li><i>Clear</i> and <i>Pause/Resume</i> are self-explanatory</li>
+				<li><i>Step</i> executes a single move of the Ant</li>
+				<li><i>Frame</i> executes a whole frame of the Ant</li>
+			</ul>
+			<p>
+				The <i>SpF</i> (Steps per Frame) <b>slider</b> controls how many steps the Ant should perform in a single frame.<br><br>
+				The middle cycle allows for changes in the colors and behaviours : <br>
+			</p>
+			<ul>
+				<li><b>Add</b> a new node at the end of the cycle</li>
+				<li><b>Edit</b> a node's color and the Ant's behaviour</li>
+				<li><b>Delete</b> a node</li>
+			</ul>
+			<p>The right-hand buttons allow to <b>Add</b> or <b>Remove</b> Ants (randomly initialized).</p>
+
+		</div>
+
 	</body>
 </html>

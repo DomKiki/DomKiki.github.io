@@ -39,26 +39,22 @@
 				<a href="https://www.red3d.com/cwr/index.html">Craig Reynolds</a> first made this model back in 1986 to simulate animal motion
 				such as bird flocks and fish schools. It consists of three simple <a href="https://www.red3d.com/cwr/steer/">steering behaviours</a>
 				to describe how each generic flocking creature (or <i>boid</i>) behaves based on its <u>nearby</u> flockmates, defined by its Field of View or <i>FoV</i>.
-				<table>
-					<tr>
-						<td><img height="100px" src="https://www.red3d.com/cwr/boids/images/separation.gif" alt="Source: Red3d" /></td>
-						<td><img height="100px" src="https://www.red3d.com/cwr/boids/images/alignment.gif" alt="Source: Red3d" /></td>
-						<td><img height="100px" src="https://www.red3d.com/cwr/boids/images/cohesion.gif" alt="Source: Red3d" /></td>
-					</tr>
-					<tr>
-						<td><b>Separation</b> from flockmates</td>
-						<td><b>Alignment</b> with the average heading </td>
-						<td><b>Cohesion</b> towards the average position</td>
-					</tr>
-				</table>
-
 			</p>
-			<h4>Practice</h4>
+			<table>
+				<tr>
+					<td><img height="100px" src="https://www.red3d.com/cwr/boids/images/separation.gif" alt="Source: Red3d" /></td>
+					<td><img height="100px" src="https://www.red3d.com/cwr/boids/images/alignment.gif" alt="Source: Red3d" /></td>
+					<td><img height="100px" src="https://www.red3d.com/cwr/boids/images/cohesion.gif" alt="Source: Red3d" /></td>
+				</tr>
+				<tr>
+					<td><b>Separation</b> from flockmates</td>
+					<td><b>Alignment</b> with the average heading </td>
+					<td><b>Cohesion</b> towards the average position</td>
+				</tr>
+			</table>
 			<p>
-				Each <i>boid</i> starts with a random position and velocity. We then update their velocity with the method described above,
-				and apply it to their position. The world is wrapped on itself so the <i>boids</i> don't fly off.<br>
-				When walls are added, we simply add another steering force, stronger as the <i>boid</i> is closer to the wall.
-				Not that realistic given that they don't really have any destination, still amusing to watch.
+				We also added a fourth steering, a repelling force away from the walls, when activated. The closer the <i>boid</i> is to the wall, 
+				the greater the force. Not that realistic given that the flocks don't have any destination, still amusing to watch.
 			</p>
 			<h4>Controls</h4>
 			<p><center>
