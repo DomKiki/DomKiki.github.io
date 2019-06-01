@@ -78,7 +78,6 @@ var p5Game = function(p) {
     
     p.keyPressed = function(event) {
         
-        event.preventDefault();
         // Avoid moving multiple times per frame
         if (movable) {
 
@@ -111,6 +110,7 @@ var p5Game = function(p) {
             }
 
             if (move) {
+                event.preventDefault();
                 snake.setDirection(d);
                 movable = false;
             }

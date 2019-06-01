@@ -6,16 +6,20 @@ var p5Score = function(p) {
 
     let boxHeight = 28;
 
+    let backgroundColor;
+
     p.setup = function() {
 
         p.createCanvas(400, 100);
         p.updateStep();
 
+        backgroundColor = p.color("#e6ffff");
+
     }
 
     p.draw = function() {
 
-        p.background(255);
+        p.background(backgroundColor);
         p.showScore();
         
     }

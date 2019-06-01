@@ -5,6 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>2048</title>
+		<link rel="stylesheet" type="text/css" href="../../style.css">
 		<link rel="stylesheet" type="text/css" href="./style.css">
 		<script type="text/javascript" src="../../p5/p5.min.js"></script>
 		<script type="text/javascript" src="../../p5/p5.dom.min.js"></script>
@@ -13,9 +14,50 @@
 
 	<body>
 
+		<div id="header">
+			<a href="../../index.html"><div id="banner"></div></a>
+			<div id="navigation">
+				<a id="navProjects" href="../../projects.html">Projects</a>
+				<span class="category">> Games ></a>
+				<span class="ariane">2048</a>
+			</div>
+		</div>
+
 		<h3 id="score"></h3>
 		<div id="canvas"></div>
 		
+		<div id="description">
+
+			<h4>History</h4>
+			<p>
+				<i>2048</i> is a puzzle game created in 2014 by Italian developer Gabriele Cirulli, inpired by
+				Veewo Studio's <i>1024</i> which himself is a clone of the game <i>Threes!</i>.<br>
+				It was described as the <i>Candy Crush</i> for math geeks,
+				also compared to <i>Flappy Bird</i> because of how addictive it is, but without the mindlessness.<br>
+				Initially released under the <a href="https://en.wikipedia.org/wiki/MIT_License">MIT License</a>,
+				this game became a viral hit, recieving over 4 million visitors in the first week. Since then,
+				it was ported to almost every platforms and multiple clones were born.
+			</p>
+
+			<h4>Rules</h4>
+			<p>
+				The game plays out on a blank 4x4 grid consisting with two initialized tiles.<br>
+				The only move available to the player is <i>sliding</i> the board.
+				Tiles will slide as far as possible <u>until stopped</u> by either another tile or the edge of the grid.<br>
+				Two tiles with equal values will <u>merge</u> into one when colliding during a move.<br>
+				The resulting tile will have the <u>total value</u> of the two tiles that collided,
+				and will not be able to merge with another tile before the <u>next move</u>.<br>
+				Every time the board changes, a new tile spawns in an empty space of the grid,
+				with a 90/10 probability of having a value of 2/4.<br>
+				The game ends when no tiles can merge and if there are no empty spaces left in the grid.
+			</p>
+
+			<h4>Controls</h4>
+			<ul>
+				<li><b>Directional arrows</b> : Slide the board</li>
+			</ul>
+		</div>
+
 	</body>
 
 </html>

@@ -1,5 +1,3 @@
-body { 
-	margin: 20px auto auto auto;
-	padding: auto;
+#canvas, #score { 
 	text-align: center;
 }
