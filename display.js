@@ -13,13 +13,14 @@ const DIR_PRJ = "./projects/",
 	  DIR_IMG = "./img/",
 	  GITHUB  = "https://github.com/DomKiki/";
 
-var entries = [ makeEntry("DFT Paint",        "FourierPaint",    MATHS, [JPG],      "Convert a path into epicycles using Discrete Fourier Transform",        "paint.html",       "DFT-Paint"),
-				makeEntry("Boid Flock",       "BirdFlock",       MATHS, [PNG, GIF], "Watch flocking behaviour emerge from 3 simple rules",                   "flock.html",       "BirdFlock"),
-				makeEntry("Langton's Ant",    "LangtonAnt",      MATHS, [PNG, GIF], "Play with the settings and discover amazing patterns of Langton's Ant", "langton.html",     "Langton-Ant"),
-				makeEntry("Tesseract",        "Tesseract",       MATHS, [PNG, GIF], "Explore the 4th dimension by rotating a hypercube",                     "tesseract.html",   "Tesseract"),
-				makeEntry("Fractal Explorer", "FractalExplorer", MATHS, [PNG, GIF], "Visual Interactive tool to explore Mandelbrot / Julia sets",            "fractal.html",     "FractalExplorer"),
-				makeEntry("2048",             "2048",            GAMES, [PNG, GIF], "Sliding Puzzle game",                                                   "2048.html",        "2048"),
-				makeEntry("Snake",            "Snake",           GAMES, [PNG, GIF], "Retro game revisited",                                                  "snake.html",       "Snake")
+var entries = [ makeEntry("Life",             "GameOfLife",      MATHS, [PNG, GIF], "One Automaton to rule them all !",                                      "life.html",      "GameOfLife"),  
+				makeEntry("DFT Paint",        "FourierPaint",    MATHS, [JPG],      "Convert a path into epicycles using Discrete Fourier Transform",        "paint.html",     "DFT-Paint"),
+				makeEntry("Boid Flock",       "BirdFlock",       MATHS, [PNG, GIF], "Watch flocking behaviour emerge from 3 simple rules",                   "flock.html",     "BirdFlock"),
+				makeEntry("Langton's Ant",    "LangtonAnt",      MATHS, [PNG, GIF], "Play with the settings and discover amazing patterns of Langton's Ant", "langton.html",   "Langton-Ant"),
+				makeEntry("Tesseract",        "Tesseract",       MATHS, [PNG, GIF], "Explore the 4th dimension by rotating a hypercube",                     "tesseract.html", "Tesseract"),
+				makeEntry("Fractal Explorer", "FractalExplorer", MATHS, [PNG, GIF], "Visual Interactive tool to explore Mandelbrot / Julia sets",            "fractal.html",   "FractalExplorer"),
+				makeEntry("2048",             "2048",            GAMES, [PNG, GIF], "Sliding Puzzle game",                                                   "2048.html",      "2048"),
+				makeEntry("Snake",            "Snake",           GAMES, [PNG, GIF], "Retro game revisited",                                                  "snake.html",     "Snake")
 ];
 
 function makeEntry(t, di, p, tmb, des, dem, src) {
