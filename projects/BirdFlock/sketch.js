@@ -4,6 +4,8 @@ var flock   = [];
 var walls   = [];
 var options = { fov: false, vel: false, walls: false };
 
+var backgroundColor;
+
 var slidersDiv;
 
 var sldAli,
@@ -22,6 +24,7 @@ function setup() {
 	
     var canvas = createCanvas(800, 600);
 	canvas.parent("canvas");
+	backgroundColor = color("#e6ffff");
 	
 	for (var i = 0; i < 100; i++)
 		flock.push(new Boid(random(width), random(height)));
@@ -53,7 +56,7 @@ function setup() {
 
 function draw() {
 	
-    background(255);
+    background(backgroundColor);
 	
 	if (options.walls) {
 		strokeWeight(1);	

@@ -7,7 +7,8 @@ var sliders,
 	angles,
 	checkboxes,
 	cycling,
-	rotationMatrices = [];
+	rotationMatrices = []
+	backgroundColor;
 
 var btnRandom,
 	randomize  = false,
@@ -21,6 +22,7 @@ function setup() {
 	
     var canvas = createCanvas(800, 600, WEBGL);
 	canvas.parent("canvas");
+	backgroundColor = color("#e6ffff");
 	
 	// Init sliders, checkboxes, angles and rotation matrices
 	var trSliders  = selectAll("tr", select("table", select("#sliders")));
@@ -88,7 +90,7 @@ function setup() {
 
 function draw() {
 
-    background(255);
+    background(backgroundColor);
 	strokeWeight(3);
 	stroke(10);
 	noFill();

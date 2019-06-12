@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Fractal Clock</title>
+		<link rel="stylesheet" type="text/css" href="../../style.css">
+		<link rel="stylesheet" type="text/css" href="./style.css">
+		<script type="text/javascript" src="../../p5/p5.min.js"></script>
+		<script type="text/javascript" src="../../p5/p5.dom.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+		<script src="branch.js" type="text/javascript"></script>
+		<script src="gui.js" type="text/javascript"></script>
+		<script src="sketch.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+
+		<div id="header">
+			<a href="../../index.html"><div id="banner"></div></a>
+			<div id="navigation">
+				<a id="navProjects" href="../../projects.html">Projects</a>
+				<span class="category">> Maths ></a>
+				<span class="ariane">Fractal Clock</a>
+			</div>
+		</div>
+
+		<div id="canvasDiv"></div>
+	
+		<div id="description">
+				<h4>Theory</h4>
+				<p>
+					<a href="https://en.wikipedia.org/wiki/Fractal">Fractals</a> are figures exhibiting similar patterns at increasingly small scales (called self similarity).<br>
+					Building one is really simple :
+				</p>
+				<ul>
+					<li>Draw a line of length <b>L</b></li>
+					<li>Rotate by some angle <b>θ</b></li>
+					<li>Shorten <b>L</b> by some factor <b>f</b> (L = L * f)</li>
+					<li>Repeat until <b>L</b> is less than some threshold</li>
+				</ul>
+				<p>
+					We will end up with a spiral-shaped figure. Now if instead of drawing one <i>branch</i> at each intersection we draw <u>more</u> (with different θ)
+					we will get a tree-like figure.<br><br>
+					For this one, θ is the three clock's hands angle (relative to the origin).<br>
+				</p>
+				<h4>Controls</h4>
+				<ul>
+					<li><b>Shrink</b> : Shortening factor <b>f</b></li>
+					<li><b>Min. Length</b> : Minimum length of the <i>branches</i></li>
+					<li><b>Branches</b> : 
+						<ol>
+							<li>Seconds</li>
+							<li>Seconds / Minutes</li>
+							<li>Seconds / Minutes / Hours</li>
+						</ol>
+					</li>
+					<li><b>Color</b> : Individual (each angle has its color) / None (all black)</li>
+					<li><b>Hide/Show Clock</b> : En/disable clock's display</li>
+				</ul>
+				<p>
+
+				</p>
+			</div>
+		
+	</body>
+
+</html>
