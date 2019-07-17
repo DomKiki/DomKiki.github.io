@@ -4,6 +4,13 @@ var myPool = document.getElementById("myPool");
 const MAX_ITEMS = 8;
 var itemsBench  = [];
 
+// Fill Tier 1 pool
+var tier1Items = [2, 3, 5, 7, 11, 13, 17, 19];
+var itemPool = document.getElementById("pool");
+for (var i = 0; i < tier1Items.length; i++) {
+    createItem(getItem(tier1Items[i]), itemPool);
+}
+
 function refreshBench() {
     // Reset
     while (myPool.firstChild)
@@ -12,9 +19,7 @@ function refreshBench() {
     for (var i = 0; i < itemsBench.length; i++) {
         var img = createImage(itemsBench[i], "items", "icon");
         const index = i;
-        img.addEventListener("click", function() {
-            removeItem(index);
-        })
+        img.addEventListener("click", function() { removeTier1Item(index); });
         myPool.appendChild(img);
     }
 }
@@ -30,7 +35,9 @@ function refreshPossibleItems() {
             var combined = combineItems(itemsBench[i][0], itemsBench[j][0]);
             var img = createImage(combined, "items", "smallIcon");
             const focus = combined[0];
-            img.addEventListener("click", function() { highlight(focus); });
+            img.addEventListener("mouseover", function() { highlight(focus); });
+            img.addEventListener("mouseout", function() { highlight(focus); });
+            img.addEventListener("click", function() { removeTier2Item(focus); });
             if (!possible.includes(combined[0])) {
                 possible.push(combined[0]);
                 possibleItems.appendChild(img);
@@ -40,18 +47,22 @@ function refreshPossibleItems() {
 
 function highlight(focus) {
 
-    // Parse itemsBench and highlight focus
+    // Highlight focus
     var nodes = possibleItems.childNodes;    
     for (var i = 0; i < nodes.length; i++) {
         var node = nodes[i];
-        if (node.value == focus) {
-            console.log("highlight " + focus)
+        if (node.getAttribute("value") == focus) {
             node.classList.toggle("highlight");
-            return;
+            break;
         }
     }
         
-    // Parse possible combinations and highlight involved items
+    // Parse itemsBench and highlight components
+    nodes = myPool.childNodes;
+    for (var i = 0; i < itemsBench.length; i++)
+        if ((focus % itemsBench[i][0]) == 0)
+            nodes[i].classList.toggle("highlight");
+
 }
 
 // Add item to bench
@@ -63,10 +74,25 @@ function addItem(item) {
 }
 
 // Remove item from bench
-function removeItem(index) {
-    itemsBench.splice(index, 1);
+function removeTier1Item(index) {
+    if ((index < 0) || (index >= itemsBench.length)) return;
+    if (isTier1(itemsBench[index]))
+        itemsBench.splice(index, 1);
     refreshPossibleItems();
     refreshBench();
+}
+
+// Remove combined item and components from bench
+function removeTier2Item(id) {
+    if (!tier1Items.includes(id))
+        for (var i = 0; i < tier1Items.length; i++) {
+            var div = tier1Items[i];
+            if ((id % div) == 0) {
+                removeTier1Item(itemIndex(div));
+                removeTier1Item(itemIndex(id / div));
+                return;
+            }
+        }
 }
 
 function createImage(item, repo, clas) {
@@ -97,9 +123,10 @@ function createItem(item, div) {
     return img;
 }
 
-// Fill Tier 1 pool
-var tier1Items = [2, 3, 5, 7, 11, 13, 17, 19];
-var itemPool = document.getElementById("pool");
-for (var i = 0; i < tier1Items.length; i++) {
-    createItem(getItem(tier1Items[i]), itemPool);
+function itemIndex(id) {
+    for (var i = 0; i < itemsBench.length; i++)
+        if (itemsBench[i][0] == id)
+            return i;
+    return -1;
 }
+function isTier1(item) { return tier1Items.includes(item[0]); }
