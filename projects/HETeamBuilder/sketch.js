@@ -1,8 +1,3 @@
-/*********************** To do ***********************
-	Task															Difficulty
-- Make Trait class, consolidating races/classes icons in arrays			C+
-- Import/Export team as file											C-
-
 /****************** Global variables *****************/
 
 const CANVAS_H        = 900;
@@ -206,7 +201,10 @@ function drawPool(w) {
 		// Display all or only active champions depending on filters
 		if (full || ((!full) && included)) {
 			
-			fill(tiers[champions[i].tier - 1].color);
+			if ((dragged.id > 0) && (!placing.state) && (dragged.id == champions[i].id))
+				stroke(255,0,0);
+			//else
+				fill(tiers[champions[i].tier - 1].color);
 			
 			rect(offset.x + x * (ICON_SIZE + TILE_OFFSET), offset.y + y * (ICON_SIZE + TILE_OFFSET), ICON_SIZE, ICON_SIZE);
 			image(champions[i].img, 
@@ -224,7 +222,13 @@ function drawPool(w) {
 			  y++;
 			}		
 		}
-	}  
+	} 
+	
+	// Visual indication of a champion being dragged
+	if (dragged.id > 0)
+		image(dragged.img, mouseX - ICON_SIZE / 2, mouseY - ICON_SIZE / 2, ICON_SIZE, ICON_SIZE, 
+			  dragged.subsection.p.x, dragged.subsection.p.y, dragged.subsection.s, dragged.subsection.s); 
+	
 }
 
 function drawSynergies() {
@@ -357,7 +361,6 @@ function mouseReleased() {
 			grid[closest] = dragged;
 			grid[placing.source] = tmp;
 			
-			// Reset flags
 			closest        = -1;
 			dragged        = 0;
 			placing.state  = false;
@@ -376,12 +379,23 @@ function mouseReleased() {
 		
 		// If not, clone Champion object
 		if (!includes) {
-			grid[closest] = dragged.clone();
-			closest       = -1;
-			dragged       = 0;
+			grid[closest] = dragged;
 			synergies     = computeSynergies();
 		}
 	}
+	else 
+		
+		// If not moving a champion in the grid, find the first free tile
+		if (!placing.state)		
+			for (var g in grid)				
+				if (grid[g] == 0) {
+					grid[g] = dragged;
+					break;
+				}
+
+	// Reset flags
+	closest = -1;
+	dragged = 0;
 
 }
 
@@ -394,7 +408,7 @@ function mousePressed() {
 		var c  = mouseOverChampion(),
 			ch = champions[getChampionIndex(c)];
 		if ((c > -1) && (active.includes(ch.id)))
-			dragged = ch;
+			dragged = ch.clone();
 		
 		// Champion in grid (if present)
 		var g  = findClosest();
