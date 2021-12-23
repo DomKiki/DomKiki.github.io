@@ -29,8 +29,7 @@ function preload() {
 
 function setup() {
 	
-	// Cannot be too high otherwise variable masked in drawGrid() doesn't have the time to be initialized by get(), I guess it's asynchronous or something. Lucky for us we don't *need* a huge framerate for this kek
-	frameRate(20);
+	frameRate(60);
 	
 	// Canvas
 	canvas = createCanvas(CANVAS_W, CANVAS_H);
