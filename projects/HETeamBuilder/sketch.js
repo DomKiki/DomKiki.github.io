@@ -1,3 +1,11 @@
+/*********************** To do ***********************
+	Task															Difficulty
+- Get Marketplace informations about champions (API ?)					A
+- Trait effects															C+
+- Make Trait class, consolidating races/classes icons in arrays			C+
+- Sort by tier															C-
+- Import/Export team as JSON											C-
+
 /****************** Global variables *****************/
 
 const CANVAS_H        = 900;
@@ -241,11 +249,12 @@ function drawSynergies() {
 	var x_     = computeHexCoords(0,3).x + FILTER_SIZE,
 		y_;
 	
+	// This could use some optimization, it's ugly as fk
 	if (synergies.length != 0) {
 		
 		var cnt = 0;
 		for (var c in classes)
-			if (synergies.classes[c] > 0) {
+			if ((synergies.classes[c] > 0) && (classes[c].effects[synergies.classes[c] - 1] != "")) {
 				y_ = GRID_TOP_OFFSET + cnt * (FILTER_SIZE + offset.y);
 				image(class_img[c], x_, y_, FILTER_SIZE, FILTER_SIZE); 
 				text(synergies.classes[c], x_ + 1.5 * FILTER_SIZE, y_ + 0.5 * FILTER_SIZE);
@@ -254,7 +263,7 @@ function drawSynergies() {
 			
 		cnt = 0;
 		for (var r in races)
-			if (synergies.races[r] > 0) {
+			if ((synergies.races[r] > 0) && (races[r].effects[synergies.races[r] - 1] != "")) {
 				y_ = GRID_TOP_OFFSET + cnt * (FILTER_SIZE + offset.y);
 				image(race_img[r], x_ + offset.x, y_, FILTER_SIZE, FILTER_SIZE); 
 				text(synergies.races[r], x_ + 1.5 * FILTER_SIZE + offset.x, y_ + 0.5 * FILTER_SIZE);
@@ -508,6 +517,53 @@ function computeHexPoints(x, y) {
 
 }
 
+function computeSynergies() {
+	
+	var rcs = Array(races.length).fill(0);
+	var cls = Array(classes.length).fill(0);
+	var index;
+	
+	for (var i = 0; i < grid.length; i++)
+		if (grid[i].id > 0) {
+			index = getChampionIndex(grid[i].id);
+			rcs[champions[index].race-1]++;
+			cls[champions[index].clas-1]++;
+		}
+	
+	return { 'races': rcs, 'classes': cls };
+	
+}
+
+// Piece together the description of a trait's effects
+function traitDescription(type, id, lvl) {
+	
+	var fx = -1;
+	if (type == 'race')
+		fx = races[id - 1].effects;
+	else if (type == 'class')
+		fx = classes[id - 1].effects;
+	
+	// Specific to Heroes & Empires : lvl 4 includes lvl 3 and lvl 5 includes lvl 4 (IF DEFINED)
+	var str;
+	switch (lvl) {
+		
+		case 4:
+			str = (fx[3] != "") ? fx[2] + "\n" + fx[3] : "";
+			break;
+			
+		case 5:
+			str = (fx[3] != "") ? fx[4] + "\n" + fx[3] : fx[4];
+			break;
+			
+		default:
+			str = fx[lvl - 1];
+			break;
+	}		
+	
+	return str;
+}
+
+// Find the closest grid hex to the mouse
 function findClosest() {
 	
 	var c   = -1,
@@ -538,23 +594,6 @@ function findClosest() {
 	}
 	
 	return c;	
-}
-
-function computeSynergies() {
-	
-	var rcs = Array(races.length).fill(0);
-	var cls = Array(classes.length).fill(0);
-	var index;
-	
-	for (var i = 0; i < grid.length; i++)
-		if (grid[i].id > 0) {
-			index = getChampionIndex(grid[i].id);
-			rcs[champions[index].race-1]++;
-			cls[champions[index].clas-1]++;
-		}
-	
-	return { 'races': rcs, 'classes': cls };
-	
 }
 
 function getPoolOffset(w) {
