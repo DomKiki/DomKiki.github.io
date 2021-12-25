@@ -5,47 +5,89 @@
 			"id": 1,
 			"name": "Beast",
 			"effects": [
-				{},
-				{ "effect" : "Beasts gain +4% attack damage for every hit or ability cast (max. 7 stacks)" },
-				{ "effect" : "Beasts gain +6% attack damage for every hit or ability cast (max. 7 stacks)" },
-				{ "effect" : "Upon reaching 7 stacks, Beasts additionally deal 4% of the target's maximum HP as Physical damage (capped at the Beast's Attack damage). The maximum bonus" },
-				{ "effect" : "Beasts gain +9% attack damage for every hit or ability cast (max. 7)" }
+				"",
+				"+4% Attack damage for every hit or ability cast (max. 7 stacks)",
+				"+6% Attack damage for every hit or ability cast (max. 7 stacks)",
+				"Upon reaching 7 stacks, Beasts additionally deal 4% of the target's maximum HP as Physical damage (max. 100% of Attack damage)",
+				"+9% Attack damage for every hit or ability cast (max. 7 stacks)"
 			]
 		},
 		{
 			"id": 2,
 			"name": "Demon",
-			"effects": []
+			"effects": [
+				"+25% Attack damage",
+				"",
+				"+30% Attack damage",
+				"",
+				"+7% Attack damage for all allied Demons when an ally dies"
+			]
 		},
 		{
 			"id": 3,
 			"name": "Elf",
-			"effects": []
+			"effects": [
+				"",
+				"+25% Dodge chance",
+				"+35% Dodge chance",
+				"+50% Attack speed for 4s when dodging an attack",
+				"+50% Dodge chance"
+			]
 		},
 		{
 			"id": 4,
 			"name": "Goblin",
-			"effects": []
+			"effects": [
+				"",
+				"30% chance of resisting Crowd Control effects for all allies. If they fail, they gain an additional 75% Defense Rating for 4s (doesn't stack)",
+				"50% chance of resisting Crowd Control effects for all allies. If they fail, they gain an additional 125% Defense Rating for 4s (doesn't stack)",
+				"If resisting using this buff, heal back 40% of max HP",
+				"60% chance of resisting Crowd Control effects for all allies. If they fail, they gain an additional 200% Defense Rating for 4s (doesn't stack)"
+			]
 		},
 		{
 			"id": 5,
 			"name": "God",
-			"effects": []
+			"effects": [
+				"",
+				"+30% Mana regeneration for all allies",
+				"+50% Mana regeneration for all allies",
+				"+35% Healing from allies",
+				"+100% Mana regeneration for all allies"
+			]
 		},
 		{
 			"id": 6,
 			"name": "Human",
-			"effects": []
+			"effects": [
+				"",
+				"20% chance to silence target when attacking",
+				"25% chance to silence target when attacking",
+				"Humans deal an additional 35% damage to silenced enemies",
+				"40% chance to silence target when attacking"
+			]
 		},
 		{
 			"id": 7,
 			"name": "Naga",
-			"effects": []
+			"effects": [
+				"",
+				"+25% Magic resistance for all allies",
+				"+35% Magic resistance for all allies",
+				"Nagas' basic attacks decrease enemies' mana regeneration by 30% for 4s",
+				"+50% Magic resistance for all allies"
+			]
 		},
 		{
 			"id": 8,
 			"name": "Undead",
-			"effects": []
+			"effects": [
+				"",
+				"-20% Defense for all enemies",
+				"-30% Defense for all enemies",
+				"A random enemy is cursed, reducing their HP to 20% at the start of the battle",
+				"-50% Defense for all enemies"
+			]
 		}
 	],
 	
@@ -53,37 +95,79 @@
 		{
 			"id": 1,
 			"name": "Assassin",
-			"effects": []
+			"effects": [
+				"",
+				"+25% Critical Damage / +5% Critical Chance",
+				"+50% Critical Damage / +15% Critical Chance",
+				"+40% Attack Speed for 6s at the start of combat and on takedowns",
+				"+75% Critical Damage / +15% Critical Chance"
+			]
 		},
 		{
 			"id": 2,
 			"name": "Knight",
-			"effects": []
+			"effects": [
+				"",
+				"+50% Defense",
+				"+100% Defense",
+				"75% chance of ignoring Critical Damage",
+				"+200% Defense"
+			]
 		},
 		{
 			"id": 3,
 			"name": "Mage",
-			"effects": []
+			"effects": [
+				"",
+				"+20% Spell Power",
+				"+50% Spell Power",
+				"Mages' spells can inflict Critical Damage",
+				"+75% Spell Power"
+			]
 		},
 		{
 			"id": 4,
 			"name": "Mech",
-			"effects": []
+			"effects": [
+				"",
+				"Mechs explode when they die, dealing 15% of their max HP to all enemies within 1 hex",
+				"Mechs explode when they die, dealing 25% of their max HP to all enemies within 1 hex",
+				"At the start of combat, the 3 Mechs with lowest max HP will combine into a Super-Mech",
+				"Mechs explode when they die, dealing 30% of their max HP to all enemies within 1 hex"
+			]
 		},
 		{
 			"id": 5,
 			"name": "Ranger",
-			"effects": []
+			"effects": [
+				"",
+				"25% chance of doubling Attack speed every 3s",
+				"40% chance of doubling Attack speed every 3s",
+				"25% chance of ignoring enemies Defense",
+				"50% chance of doubling Attack speed every 3s"
+			]
 		},
 		{
 			"id": 6,
 			"name": "Warrior",
-			"effects": []
+			"effects": [
+				"",
+				"2s Damage immunity when falling below 50% HP",
+				"3s Damage immunity when falling below 50% HP",
+				"During this time, return 25% of Damage (before immunity)",
+				"4s Damage immunity when falling below 50% HP"
+			]
 		},
 		{
 			"id": 7,
 			"name": "Warlock",
-			"effects": []
+			"effects": [
+				"",
+				"20% Lifesteal",
+				"30% Lifesteal",
+				"6 Mana regeneration per second",
+				"50% Lifesteal"
+			]
 		}
 	],
 	
