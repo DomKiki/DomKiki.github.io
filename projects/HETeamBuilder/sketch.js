@@ -1,11 +1,3 @@
-/*********************** To do ***********************
-	Task															Difficulty
-- Get Marketplace informations about champions (API ?)					A
-- Trait effects															C+
-- Make Trait class, consolidating races/classes icons in arrays			C+
-- Sort by tier															C-
-- Import/Export team as JSON											C-
-
 /****************** Global variables *****************/
 
 const CANVAS_H        = 900;
@@ -360,6 +352,9 @@ function mouseDragged() {
 
 function mouseReleased() {
 
+	// Check if the champion is not already in the grid
+	var includes = championIsPresent(dragged);	
+
 	if (closest > -1) {
 		
 		if (placing.state) {
@@ -375,17 +370,9 @@ function mouseReleased() {
 			placing.source = -1;
 			
 			return;
-		}
+		}	
 		
-		// Check if the champion is not already in the grid
-		var includes = false;
-		for (var i in grid)
-			if (grid[i].id == dragged.id) {
-				includes = true;
-				break;
-			}
-		
-		// If not, clone Champion object
+		// If not in grid, clone Champion object
 		if (!includes) {
 			grid[closest] = dragged;
 			synergies     = computeSynergies();
@@ -396,8 +383,9 @@ function mouseReleased() {
 		// If not moving a champion in the grid, find the first free tile
 		if (!placing.state)		
 			for (var g in grid)				
-				if (grid[g] == 0) {
-					grid[g] = dragged;
+				if ((grid[g] == 0) && !includes) {
+					grid[g]   = dragged;
+					synergies = computeSynergies();
 					break;
 				}
 
@@ -561,6 +549,16 @@ function traitDescription(type, id, lvl) {
 	}		
 	
 	return str;
+}
+
+function championIsPresent(c) {
+	
+	for (var i in grid)
+			if (grid[i].id == dragged.id)
+				return true;
+				
+	return false;
+	
 }
 
 // Find the closest grid hex to the mouse
